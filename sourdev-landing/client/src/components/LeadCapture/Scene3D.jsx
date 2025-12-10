@@ -126,7 +126,7 @@ function FloatingParticles({ mouse }) {
     )
 }
 
-const Scene3D = ({ isAbsorbing }) => {
+const Scene3D = ({ isAbsorbing, isTyping }) => {
     const mouse = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
@@ -149,7 +149,7 @@ const Scene3D = ({ isAbsorbing }) => {
 
                 <FloatingParticles mouse={mouse} />
                 <TechRings isAbsorbing={isAbsorbing} mouse={mouse} />
-                <GlowingCore isAbsorbing={isAbsorbing} mouse={mouse} />
+                <GlowingCore isAbsorbing={isAbsorbing} isTyping={isTyping} mouse={mouse} />
             </Canvas>
         </div>
     );

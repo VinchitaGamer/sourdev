@@ -127,6 +127,15 @@ export default function LeadCapture() {
         </div>
     );
 
+    const [isTyping, setIsTyping] = useState(false);
+    const typingTimeout = React.useRef(null);
+
+    const handleTyping = () => {
+        setIsTyping(true);
+        if (typingTimeout.current) clearTimeout(typingTimeout.current);
+        typingTimeout.current = setTimeout(() => setIsTyping(false), 200);
+    };
+
     // Step 2: Data Capture
     const StepData = () => {
         const [localData, setLocalData] = useState({ full_name: '', whatsapp_number: '', email: '' });
@@ -138,17 +147,26 @@ export default function LeadCapture() {
                     <input
                         type="text" placeholder="Nombre Completo"
                         className="w-full bg-black/40 border border-white/20 rounded-xl p-4 text-white focus:border-neon-green focus:outline-none transition-colors"
-                        onChange={e => setLocalData({ ...localData, full_name: e.target.value })}
+                        onChange={e => {
+                            setLocalData({ ...localData, full_name: e.target.value });
+                            handleTyping();
+                        }}
                     />
                     <input
                         type="text" placeholder="WhatsApp (Ej: 591...)"
                         className="w-full bg-black/40 border border-white/20 rounded-xl p-4 text-white focus:border-neon-green focus:outline-none transition-colors"
-                        onChange={e => setLocalData({ ...localData, whatsapp_number: e.target.value })}
+                        onChange={e => {
+                            setLocalData({ ...localData, whatsapp_number: e.target.value });
+                            handleTyping();
+                        }}
                     />
                     <input
                         type="email" placeholder="Correo Electrónico"
                         className="w-full bg-black/40 border border-white/20 rounded-xl p-4 text-white focus:border-neon-green focus:outline-none transition-colors"
-                        onChange={e => setLocalData({ ...localData, email: e.target.value })}
+                        onChange={e => {
+                            setLocalData({ ...localData, email: e.target.value });
+                            handleTyping();
+                        }}
                     />
                     <button
                         disabled={!localData.full_name || !localData.whatsapp_number}
@@ -206,7 +224,7 @@ export default function LeadCapture() {
         <div className="relative w-full h-screen overflow-hidden bg-black flex flex-col items-center justify-center">
             {/* 3D Background */}
             <div className="absolute inset-0 z-0">
-                <Scene3D isAbsorbing={isAbsorbing} />
+                <Scene3D isAbsorbing={isAbsorbing} isTyping={isTyping} />
             </div>
 
             {/* Content */}
