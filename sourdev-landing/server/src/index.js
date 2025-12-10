@@ -76,10 +76,16 @@ app.get('/setup-db', async (req, res) => {
     `);
 
     // 5. Seed Admin (Check if exists first)
-    const [admins] = await pool.query("SELECT * FROM admins WHERE username = 'admin'");
-    if (admins.length === 0) {
-      await pool.query("INSERT INTO admins (username, password_hash) VALUES ('admin', '$2b$10$dk88CPRWDRSxK2Wbk1JDxOVVWMtHVdOL1vbuuajSbekpLWmZpl.Ar6')");
-    }
+    // 5. Seed/Reset Admin (Ensure password is correct)
+    const password = 'admin123';
+    const { hash } = await import('bcryptjs');
+    const hashedPassword = await hash(password, 10);
+
+    await pool.query(`
+      INSERT INTO admins (username, password_hash) 
+      VALUES ('admin', ?) 
+      ON DUPLICATE KEY UPDATE password_hash = ?
+    `, [hashedPassword, hashedPassword]);
 
     // 6. Seed Content (Check if exists first)
     const [content] = await pool.query("SELECT * FROM site_content WHERE section_key = 'hero'");
