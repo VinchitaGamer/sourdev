@@ -93,6 +93,41 @@ app.get('/setup-db', async (req, res) => {
       await pool.query("INSERT INTO site_content (section_key, content_json) VALUES (?, ?)", ['hero', JSON.stringify(initialHero)]);
     }
 
+    // 7. Seed Pricing Plans (Starter, Pro, Enterprise)
+    const [existingPlans] = await pool.query("SELECT * FROM pricing_plans");
+    if (existingPlans.length === 0) {
+      const plans = [
+        {
+          name: 'Starter', price: '$19', description: 'Ideal para pequeños negocios.',
+          features_json: JSON.stringify(['1 número', '1,000 mensajes / mes', 'Soporte por email']),
+          extended_description: 'El plan Starter es perfecto si estás empezando.',
+          comparison_data: JSON.stringify({ 'Números': '1', 'Mensajes': '1,000', 'Soporte': 'Email' }),
+          image_url: ''
+        },
+        {
+          name: 'Pro', price: '$49', description: 'Para negocios en crecimiento.',
+          features_json: JSON.stringify(['3 números', '10,000 mensajes / mes', 'Reportes Avanzados', 'Soporte Prioritario']),
+          extended_description: 'Lleva tu negocio al siguiente nivel con el plan Pro.',
+          comparison_data: JSON.stringify({ 'Números': '3', 'Mensajes': '10,000', 'Soporte': 'Chat' }),
+          image_url: ''
+        },
+        {
+          name: 'Enterprise', price: 'Custom', description: 'Soluciones a medida.',
+          features_json: JSON.stringify(['Números ilimitados', 'Volumen masivo', 'API Dedicada']),
+          extended_description: 'Para grandes volúmenes y requerimientos específicos.',
+          comparison_data: JSON.stringify({ 'Números': 'Ilimitados', 'Mensajes': 'A medida', 'Soporte': 'Dedicado' }),
+          image_url: ''
+        }
+      ];
+
+      for (const p of plans) {
+        await pool.query(
+          "INSERT INTO pricing_plans (name, price, description, features_json, extended_description, comparison_data, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          [p.name, p.price, p.description, p.features_json, p.extended_description, p.comparison_data, p.image_url]
+        );
+      }
+    }
+
     res.send('<h1>Database Initialized Successfully! ✅</h1><p>You can now use the app.</p>');
 
   } catch (err) {
