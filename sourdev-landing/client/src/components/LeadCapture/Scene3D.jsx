@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial, Float, Stars, Text } from '@react-three/drei';
+import * as THREE from 'three';
 
 function GlowingCore({ isAbsorbing, mouse }) {
     const mesh = useRef();
@@ -18,9 +19,13 @@ function GlowingCore({ isAbsorbing, mouse }) {
         const x = (mx * window.innerWidth) / 500;
         const y = (my * window.innerHeight) / 500;
 
-        // Core Rotation & Movement
-        mesh.current.rotation.x = time * 0.2 + y;
-        mesh.current.rotation.y = time * 0.3 + x;
+        // Core Rotation & Movement with Lerp (Dampening)
+        const targetX = (mx * window.innerWidth) / 1000; // Slower movement divisor
+        const targetY = (my * window.innerHeight) / 1000;
+
+        // Dampen rotation
+        mesh.current.rotation.x = THREE.MathUtils.lerp(mesh.current.rotation.x, time * 0.2 + targetY, 0.05);
+        mesh.current.rotation.y = THREE.MathUtils.lerp(mesh.current.rotation.y, time * 0.3 + targetX, 0.05);
 
         // Cage Rotation (Opposite direction)
         cage.current.rotation.x = time * 0.1 - y;
@@ -69,12 +74,17 @@ function TechRings({ isAbsorbing, mouse }) {
         group.current.rotation.z = t * 0.05;
         group.current.rotation.x = Math.sin(t * 0.2) * 0.2;
 
-        // Parallax for Rings (Use global mouse)
+        // Parallax for Rings (Use global mouse) with Lerp
         const mx = mouse.current.x;
         const my = mouse.current.y;
 
-        group.current.position.x = mx * 0.5;
-        group.current.position.y = my * 0.5;
+        // Current positions
+        const currentX = group.current.position.x;
+        const currentY = group.current.position.y;
+
+        // Smoothly interpolate to target (mx * 0.5)
+        group.current.position.x = THREE.MathUtils.lerp(currentX, mx * 0.5, 0.05);
+        group.current.position.y = THREE.MathUtils.lerp(currentY, my * 0.5, 0.05);
 
         if (isAbsorbing) {
             group.current.scale.lerp({ x: 0, y: 0, z: 0 }, 0.1);
@@ -106,8 +116,8 @@ function FloatingParticles({ mouse }) {
         const mx = mouse.current.x;
         const my = mouse.current.y;
 
-        stars.current.rotation.x = my * 0.05;
-        stars.current.rotation.y = mx * 0.05;
+        stars.current.rotation.x = THREE.MathUtils.lerp(stars.current.rotation.x, my * 0.05, 0.02); // Very subtle
+        stars.current.rotation.y = THREE.MathUtils.lerp(stars.current.rotation.y, mx * 0.05, 0.02);
     });
     return (
         <group ref={stars}>
