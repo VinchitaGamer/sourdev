@@ -97,7 +97,19 @@ app.get('/setup-db', async (req, res) => {
 
   } catch (err) {
     console.error(err);
-    res.status(500).send(`<h1>Error initializing DB ❌</h1><pre>${err.message}</pre>`);
+    const debugInfo = {
+      host: process.env.DB_HOST || 'undefined',
+      user: process.env.DB_USER || 'undefined',
+      port: process.env.DB_PORT || 'undefined',
+      database: process.env.DB_NAME || 'undefined',
+      msg: err.message
+    };
+    res.status(500).send(`
+        <h1>Error initializing DB ❌</h1>
+        <p>Could not connect to database. Debug info:</p>
+        <pre>${JSON.stringify(debugInfo, null, 2)}</pre>
+        <p>If values are 'undefined' or 'localhost', you forgot to add Environment Variables in Railway.</p>
+    `);
   }
 });
 
