@@ -1,17 +1,22 @@
-import React, { useRef } from 'react';
+```
+import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial, Float, Stars, Text } from '@react-three/drei';
 
-function GlowingCore({ isAbsorbing }) {
+function GlowingCore({ isAbsorbing, mouse }) {
     const mesh = useRef();
     const cage = useRef();
 
     useFrame((state) => {
         const time = state.clock.getElapsedTime();
 
-        // Mouse Interaction (Parallax for Core)
-        const x = (state.mouse.x * window.innerWidth) / 500;
-        const y = (state.mouse.y * window.innerHeight) / 500;
+        // Mouse Interaction (Global Mouse Ref)
+        // Use the ref passed from parent instead of state.mouse
+        const mx = mouse.current.x;
+        const my = mouse.current.y;
+
+        const x = (mx * window.innerWidth) / 500;
+        const y = (my * window.innerHeight) / 500;
 
         // Core Rotation & Movement
         mesh.current.rotation.x = time * 0.2 + y;
@@ -56,7 +61,7 @@ function GlowingCore({ isAbsorbing }) {
     );
 }
 
-function TechRings({ isAbsorbing }) {
+function TechRings({ isAbsorbing, mouse }) {
     const group = useRef();
 
     useFrame((state) => {
@@ -64,9 +69,12 @@ function TechRings({ isAbsorbing }) {
         group.current.rotation.z = t * 0.05;
         group.current.rotation.x = Math.sin(t * 0.2) * 0.2;
 
-        // Parallax for Rings (Slightly different from core)
-        group.current.position.x = state.mouse.x * 0.5;
-        group.current.position.y = state.mouse.y * 0.5;
+        // Parallax for Rings (Use global mouse)
+        const mx = mouse.current.x;
+        const my = mouse.current.y;
+
+        group.current.position.x = mx * 0.5;
+        group.current.position.y = my * 0.5;
 
         if (isAbsorbing) {
             group.current.scale.lerp({ x: 0, y: 0, z: 0 }, 0.1);
@@ -91,12 +99,15 @@ function TechRings({ isAbsorbing }) {
     )
 }
 
-function FloatingParticles() {
+function FloatingParticles({ mouse }) {
     const stars = useRef();
     useFrame((state) => {
-        // Parallax for Background (Opposite direction = depth)
-        stars.current.rotation.x = state.mouse.y * 0.05;
-        stars.current.rotation.y = state.mouse.x * 0.05;
+        // Parallax for Background
+        const mx = mouse.current.x;
+        const my = mouse.current.y;
+
+        stars.current.rotation.x = my * 0.05;
+        stars.current.rotation.y = mx * 0.05;
     });
     return (
         <group ref={stars}>
@@ -106,6 +117,18 @@ function FloatingParticles() {
 }
 
 const Scene3D = ({ isAbsorbing }) => {
+    const mouse = useRef({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            // Normalize mouse position (-1 to 1) manually
+            mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
     return (
         <div className="absolute inset-0 -z-10 bg-black">
             <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
@@ -114,12 +137,13 @@ const Scene3D = ({ isAbsorbing }) => {
                 <pointLight position={[10, 10, 10]} intensity={1.5} color="#ec4899" />
                 <pointLight position={[-10, -10, -10]} intensity={1} color="#a3e635" />
 
-                <FloatingParticles />
-                <TechRings isAbsorbing={isAbsorbing} />
-                <GlowingCore isAbsorbing={isAbsorbing} />
+                <FloatingParticles mouse={mouse} />
+                <TechRings isAbsorbing={isAbsorbing} mouse={mouse} />
+                <GlowingCore isAbsorbing={isAbsorbing} mouse={mouse} />
             </Canvas>
         </div>
     );
 };
 
 export default Scene3D;
+```
