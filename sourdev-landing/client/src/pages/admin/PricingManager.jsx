@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, Save, X } from 'lucide-react';
+import api from '../../lib/api';
 
 export default function PricingManager() {
     const [plans, setPlans] = useState([]);
@@ -24,11 +25,8 @@ export default function PricingManager() {
 
     const fetchPlans = async () => {
         try {
-            const res = await fetch('http://localhost:4000/api/pricing');
-            if (res.ok) {
-                const data = await res.json();
-                setPlans(data);
-            }
+            const res = await api.get('/pricing');
+            setPlans(res.data);
         } catch (err) { console.error(err); }
     };
 
@@ -54,8 +52,7 @@ export default function PricingManager() {
         if (!window.confirm('Delete this plan?')) return;
         try {
             const token = localStorage.getItem('token');
-            await fetch(`http://localhost:4000/api/admin/pricing/${id}`, {
-                method: 'DELETE',
+            await api.delete(`/admin/pricing/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchPlans();
@@ -81,18 +78,16 @@ export default function PricingManager() {
         }
 
         try {
-            const res = await fetch(url, {
-                method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify({ ...formData, comparison_data: parsedComparison })
-            });
-            if (res.ok) {
-                setEditingPlan(null);
-                fetchPlans();
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
+            if (isNew) {
+                await api.post('/admin/pricing', { ...formData, comparison_data: parsedComparison }, config);
+            } else {
+                await api.put(`/admin/pricing/${editingPlan.id}`, { ...formData, comparison_data: parsedComparison }, config);
             }
+            setEditingPlan(null);
+            fetchPlans();
         } catch (e) { console.error(e); }
     };
 

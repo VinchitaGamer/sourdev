@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Check, ArrowLeft, HelpCircle } from 'lucide-react';
+import api from '../lib/api';
 
 export default function PlanDetails() {
     const { id } = useParams();
@@ -9,9 +10,9 @@ export default function PlanDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/pricing')
-            .then(res => res.json())
-            .then(data => {
+        api.get('/pricing')
+            .then(res => {
+                const data = res.data;
                 const parsed = data.map(p => ({
                     ...p,
                     features: typeof p.features_json === 'string' ? JSON.parse(p.features_json) : p.features_json,

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Save, AlertCircle } from 'lucide-react';
+import api from '../../lib/api';
 
 export default function ContentEditor() {
     const [content, setContent] = useState({
@@ -13,9 +14,10 @@ export default function ContentEditor() {
 
     useEffect(() => {
         // Fetch current content
-        fetch('http://localhost:4000/api/content/hero')
-            .then(res => res.json())
-            .then(data => {
+        // Fetch current content
+        api.get('/content/hero')
+            .then(res => {
+                const data = res.data;
                 if (data.title) setContent(data);
             })
             .catch(err => console.error(err));
@@ -32,20 +34,15 @@ export default function ContentEditor() {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:4000/api/admin/content/hero', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(content)
-            });
+            const config = {
+                headers: { 'Authorization': `Bearer ${token}` }
+            };
 
-            if (res.ok) {
-                setMessage('Content updated successfully!');
-            } else {
-                setMessage('Failed to update content.');
-            }
+            await api.put('/admin/content/hero', content, config);
+
+            setMessage('Content updated successfully!');
+
+
         } catch (err) {
             setMessage('Server error.');
         } finally {

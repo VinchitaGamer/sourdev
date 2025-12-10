@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Mail, Calendar, CheckCircle } from 'lucide-react';
+import api from '../../lib/api';
 
 export default function Dashboard() {
     const [leads, setLeads] = useState([]);
@@ -9,11 +10,10 @@ export default function Dashboard() {
         const fetchLeads = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await fetch('http://localhost:4000/api/admin/leads', {
+                const res = await api.get('/admin/leads', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
-                const data = await res.json();
-                if (res.ok) setLeads(data);
+                setLeads(res.data);
             } catch (err) {
                 console.error(err);
             } finally {

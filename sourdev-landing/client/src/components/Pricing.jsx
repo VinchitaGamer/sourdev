@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import api from '../lib/api'
 
 export default function Pricing() {
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/pricing')
-      .then(res => res.json())
-      .then(data => {
+    api.get('/pricing')
+      .then(res => {
+        const data = res.data;
         // Parse features_json if string
         const parsedData = data.map(p => ({
           ...p,

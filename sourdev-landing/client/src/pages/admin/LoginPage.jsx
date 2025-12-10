@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock } from 'lucide-react';
+import api from '../../lib/api';
 
 export default function LoginPage() {
     const [username, setUsername] = useState('');
@@ -13,15 +14,12 @@ export default function LoginPage() {
         setError('');
 
         try {
-            const res = await fetch('http://localhost:4000/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
+            const res = await api.post('/auth/login', { username, password });
 
-            const data = await res.json();
+            const data = res.data;
+            const token = data.token;
 
-            if (res.ok) {
+            if (token) {
                 localStorage.setItem('token', data.token);
                 navigate('/admin');
             } else {

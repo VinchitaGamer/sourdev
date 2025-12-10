@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import api from './lib/api';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Hero3D from './components/Hero3D';
 import HeroSection from './components/HeroSection';
@@ -29,9 +30,9 @@ function LandingPage() {
 
   useEffect(() => {
     // Fetch initial content
-    fetch('http://localhost:4000/api/content/hero')
-      .then(res => res.json())
-      .then(data => setContent(prev => ({ ...prev, hero: data })))
+    // Fetch initial content
+    api.get('/content/hero')
+      .then(res => setContent(prev => ({ ...prev, hero: res.data })))
       .catch(err => console.error(err));
 
     // Fetch detailed content would happen here
