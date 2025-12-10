@@ -28,7 +28,41 @@ export default function LeadCapture() {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
+    const [isAbsorbing, setIsAbsorbing] = useState(false);
+
+    // Simple SFX Generator
+    const playSound = (type) => {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        if (type === 'next') {
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.1);
+        } else if (type === 'success') {
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(220, audioCtx.currentTime);
+            oscillator.frequency.linearRampToValueAtTime(880, audioCtx.currentTime + 0.3);
+            gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.5);
+        }
+    };
+
     const handleNext = (data) => {
+        playSound('next');
+        setIsAbsorbing(true); // Trigger 3D absorb
+        setTimeout(() => setIsAbsorbing(false), 500); // Reset after animation
+
         setFormData({ ...formData, ...data });
         setStep(step + 1);
     };
@@ -39,6 +73,7 @@ export default function LeadCapture() {
 
         try {
             await api.post('/leads', payload);
+            playSound('success');
             setSuccess(true);
             // "Explosion" effect can be triggered here visually
         } catch (error) {
@@ -171,7 +206,7 @@ export default function LeadCapture() {
         <div className="relative w-full h-screen overflow-hidden bg-black flex flex-col items-center justify-center">
             {/* 3D Background */}
             <div className="absolute inset-0 z-0">
-                <Scene3D />
+                <Scene3D isAbsorbing={isAbsorbing} />
             </div>
 
             {/* Content */}

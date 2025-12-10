@@ -2,27 +2,38 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial, Float, Stars, Text } from '@react-three/drei';
 
-function GlowingCore() {
+function GlowingCore({ isAbsorbing }) {
     const mesh = useRef();
 
     useFrame((state) => {
-        mesh.current.rotation.x = state.clock.getElapsedTime() * 0.2;
-        mesh.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+        const time = state.clock.getElapsedTime();
+
+        // Mouse Interaction
+        // Smoothly interpolate current rotation to mouse position
+        const x = (state.mouse.x * window.innerWidth) / 500;
+        const y = (state.mouse.y * window.innerHeight) / 500;
+
+        mesh.current.rotation.x = time * 0.2 + y;
+        mesh.current.rotation.y = time * 0.3 + x;
+
+        // Absorb Effect (Rapid scale change if absorbing)
+        const scale = isAbsorbing ? 0.1 : 2.5;
+        mesh.current.scale.lerp({ x: scale, y: scale, z: scale }, 0.1);
     });
 
     return (
         <Float speed={2} rotationIntensity={1} floatIntensity={1}>
             <mesh ref={mesh} position={[0, 0, 0]} scale={2.5}>
-                <icosahedronGeometry args={[1, 15]} /> {/* High detail for smoothness */}
+                <icosahedronGeometry args={[1, 15]} />
                 <MeshDistortMaterial
-                    color="#a3e635" // Lime/Neon Green
+                    color={isAbsorbing ? "#ec4899" : "#a3e635"} // Change color on absorb
                     envMapIntensity={1}
                     clearcoat={1}
                     clearcoatRoughness={0.1}
                     metalness={0.1}
-                    distort={0.4}
-                    speed={2}
-                    emissive="#a3e635"
+                    distort={isAbsorbing ? 1.0 : 0.4} // High distortion on absorb
+                    speed={isAbsorbing ? 10 : 2}
+                    emissive={isAbsorbing ? "#ec4899" : "#a3e635"}
                     emissiveIntensity={0.5}
                 />
             </mesh>
