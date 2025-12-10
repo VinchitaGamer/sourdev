@@ -7,6 +7,7 @@ import Features from './components/Features';
 import Pricing from './components/Pricing';
 import ContactForm from './components/ContactForm';
 import PlanDetails from './pages/PlanDetails';
+import LeadCapture from './pages/LeadCapture';
 
 // Admin Pages
 import AdminLayout from './layouts/AdminLayout';
@@ -57,6 +58,7 @@ function App() {
       <Routes>
         {/* Public Landing Page */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/empezar" element={<LeadCapture />} />
         <Route path="/plan/:id" element={<PlanDetails />} />
 
         {/* Admin Routes */}

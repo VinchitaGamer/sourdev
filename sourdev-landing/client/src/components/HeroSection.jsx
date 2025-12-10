@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import Hero3D from './Hero3D.jsx'
 import { ContentContext } from '../App.jsx'
 
@@ -53,7 +54,7 @@ export default function HeroSection() {
         </p>
 
         <div className="mt-10 flex items-center gap-4">
-          <a href="#contact" className="btn-primary">{ctaText}</a>
+          <Link to="/empezar" className="btn-primary">{ctaText}</Link>
           <a href="#pricing" className="px-5 py-3 rounded-md border border-white/10 text-gray-200 hover:bg-white/5 transition">Ver Precios</a>
         </div>
 
