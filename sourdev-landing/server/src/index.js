@@ -34,10 +34,18 @@ app.get('/setup-db', async (req, res) => {
         whatsapp_number VARCHAR(30) NOT NULL,
         email VARCHAR(150) NOT NULL,
         status ENUM('nuevo','contactado','cliente') NOT NULL DEFAULT 'nuevo',
+        notes TEXT, 
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (id)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
+
+    // Auto-migration for existing table without notes
+    try {
+      await pool.query("ALTER TABLE leads ADD COLUMN notes TEXT");
+    } catch (e) {
+      // Ignore error if column already exists
+    }
 
     // 2. Admins Table
     await pool.query(`
