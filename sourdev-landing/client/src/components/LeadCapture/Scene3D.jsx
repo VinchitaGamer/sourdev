@@ -1,4 +1,4 @@
-```
+
 import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial, Float, Stars, Text } from '@react-three/drei';
@@ -146,4 +146,3 @@ const Scene3D = ({ isAbsorbing }) => {
 };
 
 export default Scene3D;
-```
