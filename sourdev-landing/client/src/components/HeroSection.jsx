@@ -56,8 +56,8 @@ export default function HeroSection() {
           <Link to="/empezar" className="btn-primary flex items-center justify-center gap-2">
             Comenzar Ahora <ArrowRight size={20} />
           </Link>
-          <a href="#demo" className="px-8 py-3 rounded-lg border border-white/10 hover:bg-white/5 font-semibold transition flex items-center justify-center gap-2">
-            <PlayCircle size={20} /> Ver Demo
+          <a href="#pricing" className="px-8 py-3 rounded-lg border border-white/10 hover:bg-white/5 font-semibold transition flex items-center justify-center gap-2">
+            Ver Precios
           </a>
         </div>
 
