@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { ArrowRight, PlayCircle } from 'lucide-react'
 import Hero3D from './Hero3D.jsx'
 import { ContentContext } from '../App.jsx'
 
