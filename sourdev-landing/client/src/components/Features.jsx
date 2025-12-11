@@ -16,8 +16,8 @@ export default function Features() {
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Potencia Nuclear <br /> para tu Marketing</h2>
             <p className="text-gray-400 max-w-md">De la idea a la venta en segundos. Nuestra IA hace el trabajo pesado por ti.</p>
           </div>
-          <span className="hidden md:inline-flex items-center text-xs text-neon-green px-3 py-1 bg-neon-green/10 rounded-full border border-neon-green/20 font-mono">
-            <span className="h-1.5 w-1.5 rounded-full bg-neon-green mr-2 animate-pulse" /> AI POWERED ENGINE v2.0
+          <span className="hidden md:inline-flex items-center text-xs text-sour-lime px-3 py-1 bg-sour-lime/10 rounded-full border border-sour-lime/20 font-mono">
+            <span className="h-1.5 w-1.5 rounded-full bg-sour-lime mr-2 animate-pulse" /> AI POWERED ENGINE v2.0
           </span>
         </div>
 
@@ -30,11 +30,11 @@ export default function Features() {
             viewport={{ once: true, amount: 0.3 }}
             className="card-gradient p-8 col-span-1 md:col-span-7 md:row-span-2 overflow-hidden relative group"
           >
-            <div className="absolute right-0 top-0 h-64 w-64 bg-neon-purple/20 blur-[100px] group-hover:bg-neon-purple/30 transition-all duration-500" />
+            <div className="absolute right-0 top-0 h-64 w-64 bg-sour-lime/10 blur-[100px] group-hover:bg-sour-lime/20 transition-all duration-500" />
 
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 text-neon-purple text-xs font-mono mb-4 border border-neon-purple/30 px-2 py-1 rounded bg-neon-purple/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-neon-purple" /> GENERATIVE AI
+              <div className="inline-flex items-center gap-2 text-sour-lime text-xs font-mono mb-4 border border-sour-lime/30 px-2 py-1 rounded bg-sour-lime/10">
+                <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> GENERATIVE AI
               </div>
               <h3 className="text-3xl font-bold text-white mb-3">Tu Creativo Publicitario IA</h3>
               <p className="text-gray-300 text-lg mb-6 max-w-lg">
@@ -46,8 +46,8 @@ export default function Features() {
                   <div className="text-gray-400 text-xs mb-1">Prompt</div>
                   <div className="text-white">"Promo pizzas 2x1"</div>
                 </div>
-                <div className="p-3 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
-                  <div className="text-neon-purple text-xs mb-1">Resultado IA</div>
+                <div className="p-3 bg-sour-lime/10 rounded-lg border border-sour-lime/20">
+                  <div className="text-sour-lime text-xs mb-1">Resultado IA</div>
                   <div className="text-white">"🍕 ¡Doble Sabor! Hoy tus pizzas favoritas al 2x1..."</div>
                 </div>
               </div>
@@ -62,10 +62,10 @@ export default function Features() {
             viewport={{ once: true, amount: 0.3 }}
             className="card-gradient p-8 col-span-1 md:col-span-5 relative overflow-hidden group"
           >
-            <div className="absolute -right-10 -bottom-10 h-40 w-40 bg-neon-blue/20 blur-[80px] group-hover:bg-neon-blue/30 transition-all duration-500" />
+            <div className="absolute -right-10 -bottom-10 h-40 w-40 bg-sour-lime/10 blur-[80px] group-hover:bg-sour-lime/20 transition-all duration-500" />
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 text-neon-blue text-xs font-mono mb-4 border border-neon-blue/30 px-2 py-1 rounded bg-neon-blue/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-neon-blue" /> CHATBOT INTELIGENTE
+              <div className="inline-flex items-center gap-2 text-sour-lime text-xs font-mono mb-4 border border-sour-lime/30 px-2 py-1 rounded bg-sour-lime/10">
+                <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> CHATBOT INTELIGENTE
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">Atención al Cliente 24/7</h3>
               <p className="text-gray-400 mb-4">
@@ -73,7 +73,7 @@ export default function Features() {
               </p>
               <div className="text-xs text-gray-500 font-mono">
                 &gt; "Hola, ¿tienen talla M?" <br />
-                <span className="text-neon-blue">&gt; "¡Sí! Quedan 3 unidades. ¿Te reservo una?"</span>
+                <span className="text-sour-lime">&gt; "¡Sí! Quedan 3 unidades. ¿Te reservo una?"</span>
               </div>
             </div>
           </motion.div>
@@ -86,8 +86,8 @@ export default function Features() {
             viewport={{ once: true, amount: 0.3 }}
             className="card-gradient p-8 col-span-1 md:col-span-12 lg:col-span-5 relative"
           >
-            <div className="inline-flex items-center gap-2 text-neon-green text-xs font-mono mb-4 border border-neon-green/30 px-2 py-1 rounded bg-neon-green/10">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon-green" /> MÁQUINA DE VENTAS
+            <div className="inline-flex items-center gap-2 text-sour-lime text-xs font-mono mb-4 border border-sour-lime/30 px-2 py-1 rounded bg-sour-lime/10">
+              <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> MÁQUINA DE VENTAS
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">Envíos Masivos Seguros</h3>
             <p className="text-gray-400">
