@@ -21,7 +21,7 @@ export default function ContactForm() {
 
   return (
     <div className="py-20">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-8">Regístrate para la beta</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-8">Contáctanos</h2>
       <form onSubmit={onSubmit} className="card-gradient p-6 grid grid-cols-1 gap-4">
         <div>
           <label className="text-sm text-gray-300">Nombre completo</label>

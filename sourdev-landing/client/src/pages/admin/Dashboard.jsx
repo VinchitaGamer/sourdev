@@ -60,34 +60,57 @@ export default function Dashboard() {
                                 <th className="p-4">Date</th>
                                 <th className="p-4">Name</th>
                                 <th className="p-4">Contact</th>
+                                <th className="p-4">Plan Interest</th>
+                                <th className="p-4">Pain Point</th>
                                 <th className="p-4">Status</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/10">
                             {leads.length === 0 ? (
                                 <tr>
-                                    <td colSpan="4" className="p-8 text-center text-gray-500">No leads found.</td>
+                                    <td colSpan="6" className="p-8 text-center text-gray-500">No leads found.</td>
                                 </tr>
-                            ) : leads.map((lead) => (
-                                <tr key={lead.id} className="text-gray-300 hover:bg-white/5">
-                                    <td className="p-4 flex items-center gap-2">
-                                        <Calendar size={16} className="text-gray-500" />
-                                        {new Date(lead.created_at).toLocaleDateString()}
-                                    </td>
-                                    <td className="p-4 font-medium text-white">{lead.full_name}</td>
-                                    <td className="p-4">
-                                        <div className="text-sm">{lead.email}</div>
-                                        <div className="text-xs text-neon-green">{lead.whatsapp_number}</div>
-                                    </td>
-                                    <td className="p-4">
-                                        <span className={`px-2 py-1 rounded-full text-xs font-semibold
+                            ) : leads.map((lead) => {
+                                // Simple parser for the 'notes' string format: "Dolor: X. Plan Interés: Y."
+                                const getNoteValue = (text, key) => {
+                                    if (!text) return '-';
+                                    const regex = new RegExp(`${key}:\\s*(.*?)(?:\\.|$)`);
+                                    const match = text.match(regex);
+                                    return match ? match[1] : '-';
+                                };
+                                const plan = getNoteValue(lead.notes, 'Plan Interés');
+                                const pain = getNoteValue(lead.notes, 'Dolor');
+
+                                return (
+                                    <tr key={lead.id} className="text-gray-300 hover:bg-white/5">
+                                        <td className="p-4 flex items-center gap-2">
+                                            <Calendar size={16} className="text-gray-500" />
+                                            {new Date(lead.created_at).toLocaleDateString()}
+                                        </td>
+                                        <td className="p-4 font-medium text-white">{lead.full_name}</td>
+                                        <td className="p-4">
+                                            <div className="text-sm">{lead.email}</div>
+                                            <div className="text-xs text-neon-green">{lead.whatsapp_number}</div>
+                                        </td>
+                                        <td className="p-4 text-sm font-semibold text-neon-blue">
+                                            {plan}
+                                        </td>
+                                        <td className="p-4 text-sm text-gray-400">
+                                            {pain === 'No Time' && <span className="flex items-center gap-1 text-red-400"><Clock size={14} /> Sin Tiempo</span>}
+                                            {pain === 'Spam' && <span className="flex items-center gap-1 text-orange-400"><MessageSquare size={14} /> Mucho Spam</span>}
+                                            {pain === 'Lost Sales' && <span className="flex items-center gap-1 text-purple-400"><CheckCircle size={14} /> Ventas Perdidas</span>}
+                                            {!['No Time', 'Spam', 'Lost Sales'].includes(pain) && pain}
+                                        </td>
+                                        <td className="p-4">
+                                            <span className={`px-2 py-1 rounded-full text-xs font-semibold
                       ${lead.status === 'nuevo' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'}
                     `}>
-                                            {lead.status.toUpperCase()}
-                                        </span>
-                                    </td>
-                                </tr>
-                            ))}
+                                                {lead.status.toUpperCase()}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </div>

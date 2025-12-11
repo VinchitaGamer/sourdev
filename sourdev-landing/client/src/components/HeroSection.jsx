@@ -33,9 +33,7 @@ export default function HeroSection() {
       <div className="scanlines -z-10" />
 
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-28 sm:pt-28 sm:pb-36">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sour-lime/30 bg-sour-lime/10 text-sour-lime text-xs font-mono">
-          <span className="h-1.5 w-1.5 rounded-full bg-sour-lime animate-pulse" /> Beta privada abierta
-        </div>
+
         <motion.h1
           className="mt-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight [text-wrap:balance]"
           variants={container}
@@ -53,9 +51,13 @@ export default function HeroSection() {
           {subtitle}
         </p>
 
-        <div className="mt-10 flex items-center gap-4">
-          <Link to="/empezar" className="btn-primary">{ctaText}</Link>
-          <a href="#pricing" className="px-5 py-3 rounded-md border border-white/10 text-gray-200 hover:bg-white/5 transition">Ver Precios</a>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link to="/empezar" className="btn-primary flex items-center justify-center gap-2">
+            Comenzar Ahora <ArrowRight size={20} />
+          </Link>
+          <a href="#demo" className="px-8 py-3 rounded-lg border border-white/10 hover:bg-white/5 font-semibold transition flex items-center justify-center gap-2">
+            <PlayCircle size={20} /> Ver Demo
+          </a>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-gray-400">

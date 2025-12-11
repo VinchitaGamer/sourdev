@@ -60,6 +60,23 @@ const StepPain = ({ handleNext }) => (
 
 const StepData = ({ handleNext, handleTyping }) => {
     const [localData, setLocalData] = useState({ full_name: '', whatsapp_number: '', email: '' });
+    const [emailError, setEmailError] = useState('');
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    };
+
+    const handleEmailChange = (e) => {
+        const val = e.target.value;
+        setLocalData({ ...localData, email: val });
+        handleTyping();
+        if (val && !validateEmail(val)) {
+            setEmailError('Ingresa un correo válido');
+        } else {
+            setEmailError('');
+        }
+    };
 
     return (
         <div className="bg-black/60 backdrop-blur-xl p-8 rounded-3xl border border-neon-purple/30 shadow-[0_0_30px_rgba(168,85,247,0.2)]">
@@ -75,25 +92,28 @@ const StepData = ({ handleNext, handleTyping }) => {
                     }}
                 />
                 <input
-                    type="text" placeholder="WhatsApp (Ej: 591...)"
+                    type="text" placeholder="WhatsApp (Solo números)"
                     className="w-full bg-black/40 border border-white/20 rounded-xl p-4 text-white focus:border-neon-green focus:outline-none transition-colors"
                     value={localData.whatsapp_number}
                     onChange={e => {
-                        setLocalData({ ...localData, whatsapp_number: e.target.value });
+                        const val = e.target.value.replace(/\D/g, ''); // Numbers only
+                        setLocalData({ ...localData, whatsapp_number: val });
                         handleTyping();
                     }}
+                    maxLength={15}
                 />
-                <input
-                    type="email" placeholder="Correo Electrónico"
-                    className="w-full bg-black/40 border border-white/20 rounded-xl p-4 text-white focus:border-neon-green focus:outline-none transition-colors"
-                    value={localData.email}
-                    onChange={e => {
-                        setLocalData({ ...localData, email: e.target.value });
-                        handleTyping();
-                    }}
-                />
+                <div className="relative">
+                    <input
+                        type="email" placeholder="Correo Electrónico"
+                        className={`w-full bg-black/40 border rounded-xl p-4 text-white focus:outline-none transition-colors ${emailError ? 'border-red-500 focus:border-red-500' : 'border-white/20 focus:border-neon-green'}`}
+                        value={localData.email}
+                        onChange={handleEmailChange}
+                    />
+                    {emailError && <span className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 text-xs">{emailError}</span>}
+                </div>
+
                 <button
-                    disabled={!localData.full_name || !localData.whatsapp_number}
+                    disabled={!localData.full_name || !localData.whatsapp_number || !localData.email || emailError}
                     onClick={() => handleNext(localData)}
                     className="w-full py-4 bg-gradient-to-r from-neon-purple to-neon-blue rounded-xl font-bold text-white text-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-4"
                 >
