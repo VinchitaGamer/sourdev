@@ -29,7 +29,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label className="text-sm text-gray-300">WhatsApp</label>
-          <input name="whatsapp_number" value={form.whatsapp_number} onChange={onChange} placeholder="+57 300 000 0000" className="mt-1 w-full bg-transparent border border-white/10 rounded-md px-3 py-2 outline-none focus:border-sour-lime focus:ring-2 focus:ring-sour-lime/30" />
+          <input name="whatsapp_number" value={form.whatsapp_number} onChange={onChange} placeholder="+591 0000 0000" className="mt-1 w-full bg-transparent border border-white/10 rounded-md px-3 py-2 outline-none focus:border-sour-lime focus:ring-2 focus:ring-sour-lime/30" />
         </div>
         <div>
           <label className="text-sm text-gray-300">Email</label>
