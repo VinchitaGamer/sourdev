@@ -3,12 +3,7 @@ import { motion } from 'framer-motion'
 export default function Features() {
   return (
     <div className="py-20 section-beam">
-      <div className="flex items-end justify-between mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold">Potencia tu operación</h2>
-        <span className="hidden md:inline-flex items-center text-xs text-gray-400 gap-2 font-mono">
-          <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> Core Features
-        </span>
-      </div>
+
 
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
