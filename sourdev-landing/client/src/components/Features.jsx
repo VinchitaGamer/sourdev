@@ -72,8 +72,8 @@ export default function Features() {
                 Un asistente virtual entrenado para resolver dudas, dar precios y agendar citas automáticamente.
               </p>
               <div className="text-xs text-gray-500 font-mono">
-                    > "Hola, ¿tienen talla M?" <br />
-                <span className="text-neon-blue">> "¡Sí! Quedan 3 unidades. ¿Te reservo una?"</span>
+                &gt; "Hola, ¿tienen talla M?" <br />
+                <span className="text-neon-blue">&gt; "¡Sí! Quedan 3 unidades. ¿Te reservo una?"</span>
               </div>
             </div>
           </motion.div>

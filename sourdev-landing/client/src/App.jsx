@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Hero3D from './components/Hero3D';
 import HeroSection from './components/HeroSection';
 import Features from './components/Features';
+import UseCases from './components/UseCases';
 import Pricing from './components/Pricing';
 import ContactForm from './components/ContactForm';
 import PlanDetails from './pages/PlanDetails';
@@ -45,6 +46,7 @@ function LandingPage() {
         <Hero3D />
         <HeroSection />
         <Features />
+        <UseCases />
         <Pricing />
         <ContactForm />
       </div>
