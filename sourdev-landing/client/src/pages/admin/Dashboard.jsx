@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Mail, Calendar, CheckCircle } from 'lucide-react';
+import { Mail, Calendar, CheckCircle, MessageSquare, Clock } from 'lucide-react';
 import api from '../../lib/api';
 
 export default function Dashboard() {
