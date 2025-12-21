@@ -1,9 +1,9 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, Points, PointMaterial, Line, Sparkles } from '@react-three/drei'
 import * as THREE from 'three'
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useState, useEffect } from 'react'
 
-function Particles({ count = 1200, radius = 2.6 }) {
+function Particles({ count = 900, radius = 2.6 }) {
   const ref = useRef()
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3)
@@ -23,7 +23,7 @@ function Particles({ count = 1200, radius = 2.6 }) {
   )
 }
 
-function Connections({ segments = 160, radius = 2.6 }) {
+function Connections({ segments = 120, radius = 2.6 }) {
   const ref = useRef()
   const lines = useMemo(() => {
     const arr = []
@@ -82,7 +82,12 @@ export default function Hero3D() {
   }
 
   return (
-    <Canvas camera={{ position: [0, 0, 6], fov: 60 }} gl={{ antialias: true }} style={{ position: 'absolute', inset: 0 }}>
+    <Canvas
+      dpr={[1, 1.5]}
+      camera={{ position: [0, 0, 6], fov: 60 }}
+      gl={{ antialias: false, powerPreference: "high-performance" }}
+      style={{ position: 'absolute', inset: 0 }}
+    >
       <color attach="background" args={['#0a0a0a']} />
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} color={'#d0ff30'} />

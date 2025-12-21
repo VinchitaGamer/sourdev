@@ -24,6 +24,8 @@ const PricingCard = ({ plan, index }) => {
             src={plan.image_url}
             alt={plan.name}
             className={`w-full h-full object-cover transition-transform duration-700 ${isOpen ? 'scale-105 opacity-20' : 'opacity-40 group-hover:scale-110'}`}
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black opacity-40" />

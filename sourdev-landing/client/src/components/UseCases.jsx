@@ -61,7 +61,7 @@ export default function UseCases() {
                         >
                             {/* Background Image with Overlay */}
                             <div className="absolute inset-0 z-0">
-                                <img src={item.img} alt={item.title} className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" />
+                                <img src={item.img} alt={item.title} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
                             </div>
 
