@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle, Bot, Zap, ArrowRight, HelpCircle } from 'lucide-react';
 
 export default function BotDemo() {
-    const phoneNumber = "59168079141";
+    const phoneNumber = "59176266696";
     const message = "Hola, vengo desde la web y quiero probar el bot de SourDev.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
