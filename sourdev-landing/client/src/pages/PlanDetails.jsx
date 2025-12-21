@@ -43,67 +43,96 @@ export default function PlanDetails() {
                 <div className="absolute inset-0 backdrop-blur-[2px]" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 relative z-10">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 relative z-10 flex flex-col items-center justify-center min-h-[85vh]">
 
-                {/* Header Navigation */}
-                <Link to="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-sour-lime mb-8 transition-colors backdrop-blur-md bg-black/30 px-4 py-2 rounded-full border border-white/10 w-fit">
-                    <ArrowLeft size={18} /> <span className="text-sm font-medium">Volver al inicio</span>
-                </Link>
+                {/* Header Navigation - Floating */}
+                <div className="absolute top-6 left-6 md:left-0 z-20">
+                    <Link to="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-sm font-medium">
+                        <ArrowLeft size={16} /> Volver
+                    </Link>
+                </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-20">
-                    {/* Left Column: Title & Description */}
-                    <div className="flex flex-col justify-center">
-                        <div className="inline-block bg-sour-lime/10 text-sour-lime px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-sour-lime/20 w-fit">
-                            Nivel Seleccionado
+                {/* Unified Glass Card */}
+                <div className="w-full bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row mt-16 md:mt-0">
+
+                    {/* Left Panel: Core Info */}
+                    <div className="p-8 md:p-12 flex-1 lg:w-1/2 flex flex-col justify-center relative">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sour-lime to-transparent opacity-50" />
+
+                        <div className="inline-flex items-center gap-2 text-sour-lime mb-6">
+                            <span className="w-2 h-2 rounded-full bg-sour-lime animate-pulse" />
+                            <span className="text-xs font-bold uppercase tracking-widest">Plan Seleccionado</span>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight">
-                            Plan <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">{currentPlan.name}</span>
+
+                        <h1 className="text-4xl md:text-5xl font-black mb-2 text-white leading-tight">
+                            {currentPlan.name}
                         </h1>
-                        <p className="text-3xl md:text-4xl font-bold text-sour-lime mb-6">{currentPlan.price}<span className="text-lg text-gray-400 font-normal">/mes</span></p>
-
-                        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl">
-                            <p className="text-lg text-gray-200 leading-relaxed">
-                                {currentPlan.extended_description || currentPlan.description}
-                            </p>
+                        <div className="flex items-baseline gap-2 mb-8">
+                            <span className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sour-lime to-white">
+                                {currentPlan.price}
+                            </span>
+                            <span className="text-lg text-gray-400">/mes</span>
                         </div>
 
-                        <div className="mt-8">
-                            <a
-                                href={`https://wa.me/59176266696?text=${encodeURIComponent(`Hola, estoy interesado en solicitar el Plan ${currentPlan.name}`)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-primary w-full md:w-auto text-center inline-block text-lg px-8 py-4 shadow-[0_0_30px_rgba(163,230,53,0.3)] hover:shadow-[0_0_50px_rgba(163,230,53,0.5)] transition-shadow"
-                            >
-                                Solicitar este Plan
-                            </a>
-                            <p className="text-gray-400 text-sm mt-3 text-center md:text-left">
-                                * Activación inmediata tras confirmación.
-                            </p>
-                        </div>
+                        <p className="text-gray-300 text-lg leading-relaxed mb-8 border-l-2 border-white/10 pl-4">
+                            {currentPlan.extended_description || currentPlan.description}
+                        </p>
+
+                        <a
+                            href={`https://wa.me/59176266696?text=${encodeURIComponent(`Hola, estoy interesado en solicitar el Plan ${currentPlan.name}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary w-full sm:w-fit text-center inline-flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl group"
+                        >
+                            Solicitar Plan <Check size={20} className="group-hover:scale-110 transition-transform" />
+                        </a>
                     </div>
 
-                    {/* Right Column: Features Card */}
-                    <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-32 bg-sour-lime/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-                        <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 relative z-10">
-                            <span className="bg-sour-lime text-black rounded-full p-1"><Check size={16} strokeWidth={4} /></span>
-                            Lo que incluye tu plan:
+                    {/* Right Panel: Features & Matrix */}
+                    <div className="bg-white/5 p-8 md:p-12 lg:w-1/2 border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col justify-center">
+                        <h3 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+                            Todas las funciones incluidas:
                         </h3>
-                        <ul className="space-y-4 relative z-10">
+
+                        {/* Compact Grid for Features */}
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 mb-8">
                             {currentPlan.features.map((feat, i) => (
-                                <li key={i} className="flex items-start gap-4 text-gray-200 group-hover:text-white transition-colors">
-                                    <div className="h-6 w-6 rounded-full bg-white/5 border border-white/20 flex items-center justify-center shrink-0 mt-0.5">
-                                        <div className="h-2 w-2 rounded-full bg-sour-lime" />
+                                <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
+                                    <div className="mt-1 min-w-[16px]">
+                                        <Check size={16} className="text-sour-lime" strokeWidth={3} />
                                     </div>
-                                    <span className="text-base leading-snug">{feat}</span>
+                                    <span className="leading-snug">{feat}</span>
                                 </li>
                             ))}
                         </ul>
+
+                        {/* Mini Comparison Highlight */}
+                        <div className="mt-auto pt-6 border-t border-white/10">
+                            <p className="text-xs text-sour-lime font-mono uppercase tracking-wider mb-3">Highlights del Plan</p>
+                            <div className="grid grid-cols-2 gap-4">
+                                {allComparisonKeys.slice(0, 4).map(key => (
+                                    <div key={key}>
+                                        <div className="text-xs text-gray-500 mb-1">{key}</div>
+                                        <div className="text-sm font-semibold text-white">{currentPlan.comparison[key] || '-'}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {/* Comparison Table */}
+                {/* Minimal FAQ Below (Optional/Secondary) */}
+                <div className="mt-16 w-full max-w-4xl text-center">
+                    <p className="text-gray-500 text-sm">
+                        ¿Dudas? <a href="https://wa.me/59176266696" className="text-white hover:text-sour-lime underline underline-offset-4 decoration-sour-lime/30">Habla con un asesor humano</a> o revisa nuestra tabla comparativa completa abajo.
+                    </p>
+                </div>
+
+                <div className="h-20" />
+            </div>
+
+            {/* Comparison Table */}
+            <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 relative z-10">
                 <div className="mb-20 bg-black/40 backdrop-blur-lg border border-white/10 rounded-3xl p-6 md:p-8 overflow-hidden">
                     <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Comparativa Completa</h2>
                     <div className="overflow-x-auto">
