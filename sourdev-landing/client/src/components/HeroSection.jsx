@@ -36,8 +36,7 @@ export default function HeroSection() {
 
       <div className="mx-auto max-w-7xl px-6 pt-10 pb-28 sm:pt-20 sm:pb-36 relative">
         <div className="absolute top-6 left-6 flex items-center gap-3">
-          <img src={logo} alt="SourDev Logo" className="h-10 w-auto" />
-          <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">sourdev</span>
+          <img src={logo} alt="SourDev Logo" className="h-20 w-auto" />
         </div>
 
         <motion.h1
