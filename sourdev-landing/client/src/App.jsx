@@ -5,6 +5,7 @@ import Hero3D from './components/Hero3D';
 import HeroSection from './components/HeroSection';
 import Features from './components/Features';
 import UseCases from './components/UseCases';
+import BotDemo from './components/BotDemo';
 import Pricing from './components/Pricing';
 import ContactForm from './components/ContactForm';
 import PlanDetails from './pages/PlanDetails';
@@ -47,6 +48,7 @@ function LandingPage() {
         <HeroSection />
         <Features />
         <UseCases />
+        <BotDemo />
         <Pricing />
         <ContactForm />
       </div>
