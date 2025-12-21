@@ -54,24 +54,29 @@ export default function PlanDetails() {
     return (
         <div className="min-h-screen text-white font-sans relative overflow-x-hidden">
 
-            {/* Immersive Background */}
+            {/* Immersive Background - Optimized */}
             <div className="fixed inset-0 z-0">
-                <img src={bgImage} alt="Background" className="w-full h-full object-cover opacity-30" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
-                <div className="absolute inset-0 backdrop-blur-[2px]" />
+                <img
+                    src={bgImage}
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-40"
+                    decoding="async"
+                />
+                {/* Removed costly backdrop-blur-sm layer, increased gradient opacity instead */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/60" />
             </div>
 
             <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 relative z-10 flex flex-col items-center justify-center min-h-[85vh]">
 
                 {/* Header Navigation - Floating */}
                 <div className="absolute top-6 left-6 md:left-0 z-20">
-                    <Link to="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-sm font-medium">
+                    <Link to="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-sm font-medium">
                         <ArrowLeft size={16} /> Volver
                     </Link>
                 </div>
 
-                {/* Unified Glass Card */}
-                <div className="w-full bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row mt-16 md:mt-0">
+                {/* Unified Glass Card - Optimized Blur */}
+                <div className="w-full bg-black/60 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row mt-16 md:mt-0">
 
                     {/* Left Panel: Core Info */}
                     <div className="p-8 md:p-12 flex-1 lg:w-1/2 flex flex-col justify-center relative">
