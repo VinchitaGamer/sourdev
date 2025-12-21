@@ -68,6 +68,19 @@ function Scene() {
 }
 
 export default function Hero3D() {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-900 via-black to-black" />
+  }
+
   return (
     <Canvas camera={{ position: [0, 0, 6], fov: 60 }} gl={{ antialias: true }} style={{ position: 'absolute', inset: 0 }}>
       <color attach="background" args={['#0a0a0a']} />
