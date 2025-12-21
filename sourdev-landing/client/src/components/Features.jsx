@@ -1,94 +1,73 @@
 import { motion } from 'framer-motion'
+import { Bot, MessageSquare, Zap, BrainCircuit, Globe, BarChart3 } from 'lucide-react'
+
+const FeatureCard = ({ icon, title, desc }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.5 }}
+    className="card-gradient p-8 rounded-2xl border border-white/5 hover:border-sour-lime/30 group transition-all duration-300"
+  >
+    <div className="w-12 h-12 bg-sour-lime/10 rounded-xl flex items-center justify-center text-sour-lime mb-6 group-hover:scale-110 transition-transform duration-300 border border-sour-lime/20">
+      {icon}
+    </div>
+    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sour-lime transition-colors">{title}</h3>
+    <p className="text-gray-400 text-sm leading-relaxed">
+      {desc}
+    </p>
+  </motion.div>
+)
 
 export default function Features() {
   return (
     <div className="py-20 section-beam">
-
-
       <div className="container mx-auto px-6 max-w-6xl">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
-          <div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Potencia Nuclear <br /> para tu Marketing</h2>
-            <p className="text-gray-400 max-w-md">De la idea a la venta en segundos. Nuestra IA hace el trabajo pesado por ti.</p>
-          </div>
-          <span className="hidden md:inline-flex items-center text-xs text-sour-lime px-3 py-1 bg-sour-lime/10 rounded-full border border-sour-lime/20 font-mono">
-            <span className="h-1.5 w-1.5 rounded-full bg-sour-lime mr-2 animate-pulse" /> AI POWERED ENGINE v2.0
-          </span>
+        <div className="text-center mb-16">
+          <span className="text-sour-lime text-xs font-mono tracking-widest uppercase mb-4 block">Tecnología de Punta</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Nuclear Power for your Marketing</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Deja de perseguir leads. Deja que nuestra IA los capture, califique y cierre por ti.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[minmax(180px,auto)] gap-6">
-          {/* Card 1: AI Ad Generator (Main) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="card-gradient p-8 col-span-1 md:col-span-7 md:row-span-2 overflow-hidden relative group"
-          >
-            <div className="absolute right-0 top-0 h-64 w-64 bg-sour-lime/10 blur-[100px] group-hover:bg-sour-lime/20 transition-all duration-500" />
-
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 text-sour-lime text-xs font-mono mb-4 border border-sour-lime/30 px-2 py-1 rounded bg-sour-lime/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> GENERATIVE AI
-              </div>
-              <h3 className="text-3xl font-bold text-white mb-3">Tu Creativo Publicitario IA</h3>
-              <p className="text-gray-300 text-lg mb-6 max-w-lg">
-                ¿Bloqueo creativo? Escribe un prompt simple como: <span className="italic text-white">"Vender zapatos deportivos con descuento"</span> y nuestra IA redactará 3 variantes de anuncios persuasivos listos para enviar.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="p-3 bg-white/5 rounded-lg border border-white/5">
-                  <div className="text-gray-400 text-xs mb-1">Prompt</div>
-                  <div className="text-white">"Promo pizzas 2x1"</div>
-                </div>
-                <div className="p-3 bg-sour-lime/10 rounded-lg border border-sour-lime/20">
-                  <div className="text-sour-lime text-xs mb-1">Resultado IA</div>
-                  <div className="text-white">"🍕 ¡Doble Sabor! Hoy tus pizzas favoritas al 2x1..."</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 2: AI Chatbot */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="card-gradient p-8 col-span-1 md:col-span-5 relative overflow-hidden group"
-          >
-            <div className="absolute -right-10 -bottom-10 h-40 w-40 bg-sour-lime/10 blur-[80px] group-hover:bg-sour-lime/20 transition-all duration-500" />
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 text-sour-lime text-xs font-mono mb-4 border border-sour-lime/30 px-2 py-1 rounded bg-sour-lime/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> CHATBOT INTELIGENTE
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Atención al Cliente 24/7</h3>
-              <p className="text-gray-400 mb-4">
-                Un asistente virtual entrenado para resolver dudas, dar precios y agendar citas automáticamente.
-              </p>
-              <div className="text-xs text-gray-500 font-mono">
-                &gt; "Hola, ¿tienen talla M?" <br />
-                <span className="text-sour-lime">&gt; "¡Sí! Quedan 3 unidades. ¿Te reservo una?"</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 3: Mass Sending */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="card-gradient p-8 col-span-1 md:col-span-12 lg:col-span-5 relative"
-          >
-            <div className="inline-flex items-center gap-2 text-sour-lime text-xs font-mono mb-4 border border-sour-lime/30 px-2 py-1 rounded bg-sour-lime/10">
-              <span className="h-1.5 w-1.5 rounded-full bg-sour-lime" /> MÁQUINA DE VENTAS
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Envíos Masivos Seguros</h3>
-            <p className="text-gray-400">
-              Llega a miles de contactos sin riesgo de bloqueo. Nuestro algoritmo simula comportamiento humano con retardos aleatorios inteligentes.
-            </p>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Feature 1 */}
+          <FeatureCard
+            icon={<Bot size={28} />}
+            title="Agentes de Venta IA"
+            desc="Bots entrenados para entender contexto, responder dudas complejas y llevar al cliente hasta el cierre sin intervención humana."
+          />
+          {/* Feature 2 */}
+          <FeatureCard
+            icon={<MessageSquare size={28} />}
+            title="Respuestas Inteligentes"
+            desc="Olvídate de los flujos rígidos. Nuestra IA conversa naturalmente, maneja objeciones y agenda citas en tiempo real."
+          />
+          {/* Feature 3 */}
+          <FeatureCard
+            icon={<Zap size={28} />}
+            title="Cierre Automático"
+            desc="Detecta intención de compra y envía links de pago o agendamiento en el momento exacto. Maximiza tu conversión."
+          />
+          {/* Feature 4 */}
+          <FeatureCard
+            icon={<BrainCircuit size={28} />}
+            title="Aprendizaje Continuo"
+            desc="Tu bot aprende de cada interacción. Mientras más habla, mejor vende. Optimización constante de tu funnel."
+          />
+          {/* Feature 5 */}
+          <FeatureCard
+            icon={<Globe size={28} />}
+            title="Disponibilidad 24/7"
+            desc="Tu mejor vendedor nunca duerme. Atiende clientes de cualquier zona horaria, en cualquier momento, instantáneamente."
+          />
+          {/* Feature 6 */}
+          <FeatureCard
+            icon={<BarChart3 size={28} />}
+            title="Analytics de Conversación"
+            desc="Entiende qué dicen tus clientes. Reportes de sentimiento, objeciones frecuentes y tasa de resolución."
+          />
         </div>
       </div>
     </div>

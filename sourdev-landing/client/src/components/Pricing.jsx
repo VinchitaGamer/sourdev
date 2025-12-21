@@ -44,7 +44,18 @@ export default function Pricing() {
                 </div>
               )}
 
-              <div className="mb-6">
+              <div className="mb-6 relative">
+                {/* Image Placeholder or Actual Image */}
+                <div className="w-full aspect-video rounded-xl bg-white/5 mb-4 overflow-hidden border border-white/10 relative group-hover:border-sour-lime/30 transition-colors">
+                  {p.image_url ? (
+                    <img src={p.image_url} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-600">
+                      <span className="text-xs">Sin Imagen</span>
+                    </div>
+                  )}
+                </div>
+
                 <h3 className="text-xl font-bold text-white mb-2">{p.name}</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-extrabold text-sour-lime">{p.price}</span>
@@ -67,8 +78,8 @@ export default function Pricing() {
               <Link
                 to={`/plan/${p.id}`}
                 className={`block w-full py-4 rounded-xl text-center font-bold transition-all ${p.name === 'Pro'
-                    ? 'bg-sour-lime text-black hover:bg-white hover:text-black shadow-[0_0_20px_rgba(163,230,53,0.3)]'
-                    : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
+                  ? 'bg-sour-lime text-black hover:bg-white hover:text-black shadow-[0_0_20px_rgba(163,230,53,0.3)]'
+                  : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
                   }`}
               >
                 {p.price.toLowerCase() === 'custom' ? 'Contactar Ventas' : 'Comenzar Ahora'}

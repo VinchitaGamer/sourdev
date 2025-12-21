@@ -33,10 +33,15 @@ export default function HeroSection() {
       <div className="radial-hero -z-10" />
       <div className="scanlines -z-10" />
 
-      <div className="mx-auto max-w-7xl px-6 pt-20 pb-28 sm:pt-28 sm:pb-36">
+      <div className="mx-auto max-w-7xl px-6 pt-10 pb-28 sm:pt-20 sm:pb-36 relative">
+        {/* Logo Placement */}
+        <div className="absolute top-6 left-6 flex items-center gap-3">
+          <img src="/src/logo.png" alt="SourDev Logo" className="h-10 w-auto" />
+          <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">sourdev</span>
+        </div>
 
         <motion.h1
-          className="mt-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight [text-wrap:balance]"
+          className="mt-16 text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight [text-wrap:balance]"
           variants={container}
           initial="hidden"
           animate="show"
@@ -48,11 +53,11 @@ export default function HeroSection() {
           ))}
         </motion.h1>
 
-        <p className="mt-6 max-w-2xl text-gray-400">
-          {subtitle}
+        <p className="mt-6 max-w-2xl text-gray-400 text-lg">
+          No más envíos masivos manuales. Implementa <span className="text-white font-semibold">Bots de Inteligencia Artificial</span> que responden, califican y cierran ventas en automático. Escala tu operación 24/7.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 mt-10">
           <Link to="/empezar" className="btn-primary flex items-center justify-center gap-2">
             Comenzar Ahora <ArrowRight size={20} />
           </Link>
@@ -62,9 +67,9 @@ export default function HeroSection() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-gray-400">
-          <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Anti-bloqueo</span>
-          <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Envíos masivos</span>
-          <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Reportes en tiempo real</span>
+          <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Cierre de Ventas</span>
+          <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Atención 24/7</span>
+          <span className="px-2 py-1 rounded bg-white/5 border border-white/10">IA Conversacional</span>
         </div>
       </div>
     </section>
