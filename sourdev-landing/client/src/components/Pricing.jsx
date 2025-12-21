@@ -14,7 +14,7 @@ const PricingCard = ({ plan, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative overflow-hidden rounded-3xl border transition-all duration-300 group ${isOpen ? 'h-auto' : 'h-[400px]'
+      className={`relative overflow-hidden rounded-3xl border transition-all duration-300 group ${isOpen ? 'h-auto' : 'h-[600px]'
         } ${isPro ? 'border-sour-lime/50 ring-1 ring-sour-lime/20' : 'border-white/10 hover:border-sour-lime/30'}`}
     >
       {/* Background Image & Overlay */}
@@ -49,7 +49,7 @@ const PricingCard = ({ plan, index }) => {
 
         {/* Collapsed Preview Description */}
         {!isOpen && (
-          <p className="text-gray-300 text-sm line-clamp-3 mb-auto">
+          <p className="text-gray-300 text-sm mb-auto">
             {plan.description}
           </p>
         )}
