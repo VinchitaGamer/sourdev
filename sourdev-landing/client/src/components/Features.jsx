@@ -7,9 +7,9 @@ const FeatureCard = ({ icon, title, desc }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.5 }}
-    className="card-gradient p-8 rounded-2xl border border-white/5 hover:border-sour-lime/30 group transition-all duration-300"
+    className="card-gradient p-4 md:p-8 rounded-2xl border border-white/5 hover:border-sour-lime/30 group transition-all duration-300"
   >
-    <div className="w-12 h-12 bg-sour-lime/10 rounded-xl flex items-center justify-center text-sour-lime mb-6 group-hover:scale-110 transition-transform duration-300 border border-sour-lime/20">
+    <div className="w-10 h-10 md:w-12 md:h-12 bg-sour-lime/10 rounded-xl flex items-center justify-center text-sour-lime mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300 border border-sour-lime/20">
       {icon}
     </div>
     <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sour-lime transition-colors">{title}</h3>
@@ -31,42 +31,42 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {/* Feature 1 */}
           <FeatureCard
-            icon={<Bot size={28} />}
-            title="Agentes de Venta IA"
-            desc="Bots entrenados para entender contexto, responder dudas complejas y llevar al cliente hasta el cierre sin intervención humana."
+            icon={<Bot size={24} />}
+            title="Agentes IA"
+            desc="Bots que entienden, responden y venden solos."
           />
           {/* Feature 2 */}
           <FeatureCard
-            icon={<MessageSquare size={28} />}
-            title="Respuestas Inteligentes"
-            desc="Olvídate de los flujos rígidos. Nuestra IA conversa naturalmente, maneja objeciones y agenda citas en tiempo real."
+            icon={<MessageSquare size={24} />}
+            title="Chat Inteligente"
+            desc="Conversaciones naturales, sin flujos rígidos."
           />
           {/* Feature 3 */}
           <FeatureCard
-            icon={<Zap size={28} />}
-            title="Cierre Automático"
-            desc="Detecta intención de compra y envía links de pago o agendamiento en el momento exacto. Maximiza tu conversión."
+            icon={<Zap size={24} />}
+            title="Cierre Auto"
+            desc="Maximiza conversión enviando pagos al instante."
           />
           {/* Feature 4 */}
           <FeatureCard
-            icon={<BrainCircuit size={28} />}
-            title="Aprendizaje Continuo"
-            desc="Tu bot aprende de cada interacción. Mientras más habla, mejor vende. Optimización constante de tu funnel."
+            icon={<BrainCircuit size={24} />}
+            title="Aprendizaje"
+            desc="Tu bot aprende y mejora con cada chat."
           />
           {/* Feature 5 */}
           <FeatureCard
-            icon={<Globe size={28} />}
-            title="Disponibilidad 24/7"
-            desc="Tu mejor vendedor nunca duerme. Atiende clientes de cualquier zona horaria, en cualquier momento, instantáneamente."
+            icon={<Globe size={24} />}
+            title="24/7 Activo"
+            desc="Vende sin descanso a cualquier hora."
           />
           {/* Feature 6 */}
           <FeatureCard
-            icon={<BarChart3 size={28} />}
-            title="Analytics de Conversación"
-            desc="Entiende qué dicen tus clientes. Reportes de sentimiento, objeciones frecuentes y tasa de resolución."
+            icon={<BarChart3 size={24} />}
+            title="Analytics"
+            desc="Reportes claros de cada conversación."
           />
         </div>
       </div>

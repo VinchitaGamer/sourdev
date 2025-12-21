@@ -30,7 +30,7 @@ const PricingCard = ({ plan, index }) => {
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black opacity-40" />
         )}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent transition-opacity duration-300 ${isOpen ? 'opacity-95' : 'opacity-100'}`} />
+        <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-opacity duration-300 ${isOpen ? 'opacity-50' : 'opacity-90'}`} />
       </div>
 
       {/* Content */}

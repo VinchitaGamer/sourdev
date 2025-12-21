@@ -49,15 +49,15 @@ export default function UseCases() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {cases.map((item, i) => (
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
+                    {cases.map((item, index) => (
                         <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            transition={{ delay: item.delay }}
-                            className="group relative overflow-hidden rounded-3xl border border-white/10 hover:border-sour-lime/50 transition-all duration-300 h-80"
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="group relative h-[256px] md:h-[320px] rounded-3xl overflow-hidden border border-white/10 hover:border-sour-lime/50 transition-all cursor-pointer shadow-lg hover:shadow-[0_0_30px_rgba(163,230,53,0.15)]"
                         >
                             {/* Background Image with Overlay */}
                             <div className="absolute inset-0 z-0">
