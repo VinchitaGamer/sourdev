@@ -28,6 +28,24 @@ export default function PlanDetails() {
     if (loading) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Cargando...</div>;
     if (!currentPlan) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Plan no encontrado.</div>;
 
+    // Marketing Pitches (Hardcoded for impact)
+    const marketingPitch = {
+        1: {
+            highlight: "Perfecto para Emprendedores",
+            text: "Deja de perder clientes por no responder a tiempo. Este plan te da un asistente que trabaja 24/7, responde dudas frecuentes y califica a tus prospectos mientras tú duermes. Recupera tu tiempo y profesionaliza tu marca desde el día 1."
+        },
+        2: {
+            highlight: "El Favorito de PyMEs en Crecimiento",
+            text: "Convierte tu WhatsApp en una máquina de ventas conectada. Sincroniza pedidos con Google Sheets y agernda citas en Calendar sin mover un dedo. Elimina el error humano y gestiona tu inventario en tiempo real. Tu negocio, en piloto automático."
+        },
+        3: {
+            highlight: "Potencia para Escalar Grandes Operaciones",
+            text: "Infraestructura robusta para empresas que no pueden fallar. Integración nativa con tu ERP/CRM y bases de datos. Maneja miles de conversaciones simultáneas con seguridad y velocidad. La fuerza de ventas digital que tu corporativo necesita."
+        }
+    };
+
+    const currentPitch = marketingPitch[currentPlan.id] || { highlight: "Potencia tu negocio", text: currentPlan.description };
+
     const allComparisonKeys = Array.from(new Set(plans.flatMap(p => Object.keys(p.comparison))));
 
     // Fallback image if plan has no specific image
@@ -64,43 +82,49 @@ export default function PlanDetails() {
                             <span className="text-xs font-bold uppercase tracking-widest">Plan Seleccionado</span>
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl font-black mb-2 text-white leading-tight">
+                        <h1 className="text-3xl md:text-5xl font-black mb-2 text-white leading-tight">
                             {currentPlan.name}
                         </h1>
-                        <div className="flex items-baseline gap-2 mb-8">
+                        <div className="flex items-baseline gap-2 mb-6">
                             <span className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sour-lime to-white">
                                 {currentPlan.price}
                             </span>
                             <span className="text-lg text-gray-400">/mes</span>
                         </div>
 
-                        <p className="text-gray-300 text-lg leading-relaxed mb-8 border-l-2 border-white/10 pl-4">
-                            {currentPlan.extended_description || currentPlan.description}
-                        </p>
+                        {/* Persuasive Description */}
+                        <div className="mb-8 border-l-2 border-sour-lime/50 pl-5">
+                            <h4 className="text-sour-lime font-bold text-lg mb-2">{currentPitch.highlight}</h4>
+                            <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+                                {currentPitch.text}
+                            </p>
+                        </div>
 
                         <a
                             href={`https://wa.me/59176266696?text=${encodeURIComponent(`Hola, estoy interesado en solicitar el Plan ${currentPlan.name}`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-primary w-full sm:w-fit text-center inline-flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl group"
+                            className="btn-primary w-full sm:w-fit text-center inline-flex items-center justify-center gap-2 text-lg px-8 py-4 rounded-xl group shadow-[0_0_20px_rgba(163,230,53,0.2)] hover:shadow-[0_0_35px_rgba(163,230,53,0.4)] transition-all"
                         >
-                            Solicitar Plan <Check size={20} className="group-hover:scale-110 transition-transform" />
+                            ¡Lo quiero ahora! <Check size={20} className="group-hover:scale-110 transition-transform" />
                         </a>
+                        <p className="text-gray-500 text-xs mt-3 flex items-center gap-1">
+                            <Check size={12} className="text-sour-lime" /> Garantía de Satisfacción SourDev
+                        </p>
                     </div>
 
                     {/* Right Panel: Features & Matrix */}
                     <div className="bg-white/5 p-8 md:p-12 lg:w-1/2 border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col justify-center">
                         <h3 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
-                            Todas las funciones incluidas:
+                            <span className="bg-white/10 p-1.5 rounded-lg"><Check size={18} className="text-sour-lime" /></span>
+                            ¿Por qué este plan es para ti?
                         </h3>
 
                         {/* Compact Grid for Features */}
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 mb-8">
                             {currentPlan.features.map((feat, i) => (
                                 <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                                    <div className="mt-1 min-w-[16px]">
-                                        <Check size={16} className="text-sour-lime" strokeWidth={3} />
-                                    </div>
+                                    <div className="mt-1 min-w-[6px] h-[6px] rounded-full bg-sour-lime" />
                                     <span className="leading-snug">{feat}</span>
                                 </li>
                             ))}
@@ -108,12 +132,12 @@ export default function PlanDetails() {
 
                         {/* Mini Comparison Highlight */}
                         <div className="mt-auto pt-6 border-t border-white/10">
-                            <p className="text-xs text-sour-lime font-mono uppercase tracking-wider mb-3">Highlights del Plan</p>
-                            <div className="grid grid-cols-2 gap-4">
+                            <p className="text-[10px] text-sour-lime font-mono uppercase tracking-widest mb-4">ESPECIFICACIONES TÉCNICAS</p>
+                            <div className="grid grid-cols-2 gap-6">
                                 {allComparisonKeys.slice(0, 4).map(key => (
                                     <div key={key}>
-                                        <div className="text-xs text-gray-500 mb-1">{key}</div>
-                                        <div className="text-sm font-semibold text-white">{currentPlan.comparison[key] || '-'}</div>
+                                        <div className="text-xs text-gray-500 mb-1 font-medium">{key}</div>
+                                        <div className="text-sm font-bold text-white">{currentPlan.comparison[key] || '-'}</div>
                                     </div>
                                 ))}
                             </div>
@@ -122,13 +146,11 @@ export default function PlanDetails() {
                 </div>
 
                 {/* Minimal FAQ Below (Optional/Secondary) */}
-                <div className="mt-16 w-full max-w-4xl text-center">
+                <div className="mt-12 w-full max-w-4xl text-center pb-8">
                     <p className="text-gray-500 text-sm">
-                        ¿Dudas? <a href="https://wa.me/59176266696" className="text-white hover:text-sour-lime underline underline-offset-4 decoration-sour-lime/30">Habla con un asesor humano</a> o revisa nuestra tabla comparativa completa abajo.
+                        ¿Aún no te decides? <a href="https://wa.me/59176266696" className="text-white hover:text-sour-lime underline underline-offset-4 decoration-sour-lime/30">Chatea con nosotros</a> y te ayudamos a elegir.
                     </p>
                 </div>
-
-                <div className="h-20" />
             </div>
 
             {/* Comparison Table */}
