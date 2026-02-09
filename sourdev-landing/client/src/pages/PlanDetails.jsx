@@ -153,7 +153,7 @@ export default function PlanDetails() {
                 {/* Minimal FAQ Below (Optional/Secondary) */}
                 <div className="mt-12 w-full max-w-4xl text-center pb-8">
                     <p className="text-gray-500 text-sm">
-                        ¿Aún no te decides? <a href="https://wa.me/59176266696" className="text-white hover:text-sour-lime underline underline-offset-4 decoration-sour-lime/30">Chatea con nosotros</a> y te ayudamos a elegir.
+                        ¿Aún no te decides? <a href="https://wa.me/59168079141" className="text-white hover:text-sour-lime underline underline-offset-4 decoration-sour-lime/30">Chatea con nosotros</a> y te ayudamos a elegir.
                     </p>
                 </div>
             </div>
