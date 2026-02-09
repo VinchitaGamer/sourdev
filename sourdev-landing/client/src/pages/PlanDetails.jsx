@@ -28,19 +28,19 @@ export default function PlanDetails() {
     if (loading) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Cargando...</div>;
     if (!currentPlan) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Plan no encontrado.</div>;
 
-    // Marketing Pitches (Hardcoded for impact)
+    // Marketing Pitches (Updated for Chatbot focus)
     const marketingPitch = {
         1: {
-            highlight: "Perfecto para Emprendedores",
-            text: "Deja de perder clientes por no responder a tiempo. Este plan te da un asistente que trabaja 24/7, responde dudas frecuentes y califica a tus prospectos mientras tú duermes. Recupera tu tiempo y profesionaliza tu marca desde el día 1."
+            highlight: "Elimina las Preguntas Repetitivas",
+            text: "¿Cansado de responder '¿Precio?' y '¿Ubicación?' todo el día? Este bot se encarga de lo básico por ti. Responde al instante, filtra curiosos de clientes reales y mantiene tu negocio activo 24/7. Recupera tu tiempo libre."
         },
         2: {
-            highlight: "El Favorito de PyMEs en Crecimiento",
-            text: "Convierte tu WhatsApp en una máquina de ventas conectada. Sincroniza pedidos con Google Sheets y agernda citas en Calendar sin mover un dedo. Elimina el error humano y gestiona tu inventario en tiempo real. Tu negocio, en piloto automático."
+            highlight: "Tu Secretaria Virtual Infalible",
+            text: "Olvida los cruces de horarios y los 'se me pasó anotarlo'. Este bot gestiona tu agenda, confirma citas y registra cada cliente en tu Google Sheets automáticamente. Organiza tu negocio y reduce el ausentismo sin contratar personal extra."
         },
         3: {
-            highlight: "Potencia para Escalar Grandes Operaciones",
-            text: "Infraestructura robusta para empresas que no pueden fallar. Integración nativa con tu ERP/CRM y bases de datos. Maneja miles de conversaciones simultáneas con seguridad y velocidad. La fuerza de ventas digital que tu corporativo necesita."
+            highlight: "El Cerebro Digital de tu Empresa",
+            text: "Más que un bot, es un sistema operativo. Conecta WhatsApp con tu inventario, CRM y sistemas de pago. Crea flujos complejos de venta y soporte. Es la infraestructura que necesitas para escalar masivamente sin perder el toque personal."
         }
     };
 
