@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
-import logo from '../pages/logo2.ico'
+import logo from '../logo2.ico'
 
 const NAV_LINKS = [
     { label: '¿Cómo Funciona?', href: '#como-funciona' },

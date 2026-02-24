@@ -2,7 +2,7 @@ import { useContext, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, PlayCircle } from 'lucide-react'
-import logo from '../pages/logo2.ico'
+import logo from '../logo2.ico'
 import Hero3D from './Hero3D.jsx'
 import { ContentContext } from '../App.jsx'
 
