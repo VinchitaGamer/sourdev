@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import logo from '../logo2.ico'
+import ThemeToggle from './ThemeToggle'
 
 const NAV_LINKS = [
     { label: '¿Cómo Funciona?', href: '#como-funciona' },
@@ -66,8 +67,9 @@ export default function Navbar() {
                             ))}
                         </div>
 
-                        {/* Desktop CTA */}
+                        {/* Desktop CTA + Theme Toggle */}
                         <div className="hidden md:flex items-center gap-3">
+                            <ThemeToggle />
                             <Link
                                 to="/empezar"
                                 className="flex items-center gap-1.5 text-sm font-bold bg-sour-lime text-black px-4 py-2 rounded-lg hover:bg-white transition-colors shadow-[0_0_12px_rgba(182,255,0,0.3)]"
@@ -107,13 +109,16 @@ export default function Navbar() {
                                 {link.label}
                             </button>
                         ))}
-                        <Link
-                            to="/empezar"
-                            onClick={() => setMenuOpen(false)}
-                            className="btn-primary flex items-center justify-center gap-2 mt-2 py-3 rounded-xl"
-                        >
-                            Empezar Gratis <ArrowRight size={16} />
-                        </Link>
+                        <div className="flex items-center justify-between pt-2 border-t border-white/10">
+                            <ThemeToggle />
+                            <Link
+                                to="/empezar"
+                                onClick={() => setMenuOpen(false)}
+                                className="btn-primary flex items-center gap-2 py-2.5 px-5 rounded-xl text-sm"
+                            >
+                                Empezar Gratis <ArrowRight size={16} />
+                            </Link>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

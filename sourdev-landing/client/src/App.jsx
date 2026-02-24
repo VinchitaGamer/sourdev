@@ -45,7 +45,7 @@ function LandingPage() {
 
   return (
     <ContentContext.Provider value={content}>
-      <div className="bg-black text-white min-h-screen">
+      <div className="theme-bg theme-text min-h-screen transition-colors duration-300">
         <Navbar />
         <Hero3D />
         <HeroSection />
