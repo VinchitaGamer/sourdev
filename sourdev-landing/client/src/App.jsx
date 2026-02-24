@@ -8,6 +8,10 @@ import UseCases from './components/UseCases';
 import BotDemo from './components/BotDemo';
 import Pricing from './components/Pricing';
 import ContactForm from './components/ContactForm';
+import HowItWorks from './components/HowItWorks';
+import FAQ from './components/FAQ';
+import Footer from './components/Footer';
+import FloatingCTA from './components/FloatingCTA';
 import PlanDetails from './pages/PlanDetails';
 import LeadCapture from './pages/LeadCapture';
 
@@ -32,13 +36,9 @@ function LandingPage() {
   const [content, setContent] = useState({});
 
   useEffect(() => {
-    // Fetch initial content
-    // Fetch initial content
     api.get('/content/hero')
       .then(res => setContent(prev => ({ ...prev, hero: res.data })))
       .catch(err => console.error(err));
-
-    // Fetch detailed content would happen here
   }, []);
 
   return (
@@ -46,11 +46,15 @@ function LandingPage() {
       <div className="bg-black text-white min-h-screen">
         <Hero3D />
         <HeroSection />
+        <HowItWorks />
         <Features />
         <UseCases />
         <BotDemo />
         <Pricing />
+        <FAQ />
         <ContactForm />
+        <Footer />
+        <FloatingCTA />
       </div>
     </ContentContext.Provider>
   );
