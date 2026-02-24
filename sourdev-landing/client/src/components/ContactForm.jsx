@@ -31,8 +31,8 @@ export default function ContactForm() {
           className="text-center mb-16"
         >
           <span className="text-xs font-bold uppercase tracking-widest text-sour-lime/70 mb-4 block">Contacto</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">¿Listo para Automatizar?</h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text)' }}>¿Listo para Automatizar?</h2>
+          <p className="max-w-xl mx-auto" style={{ color: 'var(--text-muted)' }}>
             Cuéntanos tu caso. Nos ponemos en contacto en menos de 24 horas.
           </p>
         </motion.div>
@@ -56,7 +56,8 @@ export default function ContactForm() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-5 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/8 transition-all"
+                  className="flex items-center gap-4 p-5 rounded-2xl hover:border-sour-lime/30 transition-all"
+                  style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}
                 >
                   <div className="w-12 h-12 rounded-xl bg-black/60 flex items-center justify-center shrink-0">
                     <Icon size={22} className={item.color} />

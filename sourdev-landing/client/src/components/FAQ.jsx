@@ -31,12 +31,18 @@ const faqs = [
 
 function FAQItem({ q, a, isOpen, onToggle }) {
     return (
-        <div className={`border rounded-2xl overflow-hidden transition-colors duration-300 ${isOpen ? 'border-sour-lime/40 bg-white/5' : 'border-white/10 bg-white/3 hover:border-white/20'}`}>
+        <div
+            className="rounded-2xl overflow-hidden transition-all duration-300"
+            style={{
+                border: `1px solid ${isOpen ? 'var(--border-neon)' : 'var(--border)'}`,
+                backgroundColor: 'var(--bg-card)',
+            }}
+        >
             <button
                 onClick={onToggle}
                 className="w-full flex items-center justify-between gap-4 p-6 text-left"
             >
-                <span className="font-semibold text-white text-sm md:text-base">{q}</span>
+                <span className="font-semibold text-sm md:text-base" style={{ color: 'var(--text)' }}>{q}</span>
                 <ChevronDown
                     size={20}
                     className={`shrink-0 text-sour-lime transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
@@ -51,7 +57,7 @@ function FAQItem({ q, a, isOpen, onToggle }) {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                     >
-                        <p className="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/10 pt-4">
+                        <p className="px-6 pb-6 text-sm leading-relaxed pt-4" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)' }}>
                             {a}
                         </p>
                     </motion.div>
@@ -74,8 +80,8 @@ export default function FAQ() {
                     className="text-center mb-16"
                 >
                     <span className="text-xs font-bold uppercase tracking-widest text-sour-lime/70 mb-4 block">Preguntas Frecuentes</span>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">¿Tienes Dudas?</h2>
-                    <p className="text-gray-400">Las respuestas más comunes antes de dar el salto.</p>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text)' }}>¿Tienes Dudas?</h2>
+                    <p style={{ color: 'var(--text-muted)' }}>Las respuestas más comunes antes de dar el salto.</p>
                 </motion.div>
 
                 <div className="space-y-3">

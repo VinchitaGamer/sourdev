@@ -42,8 +42,8 @@ export default function HowItWorks() {
                     className="text-center mb-16"
                 >
                     <span className="text-xs font-bold uppercase tracking-widest text-sour-lime/70 mb-4 block">El Proceso</span>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">¿Cómo Funciona?</h2>
-                    <p className="text-gray-400 max-w-xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text)' }}>¿Cómo Funciona?</h2>
+                    <p className="max-w-xl mx-auto text-muted" style={{ color: 'var(--text-muted)' }}>
                         En 3 simples pasos, tu negocio opera en piloto automático las 24 horas.
                     </p>
                 </motion.div>
@@ -62,16 +62,20 @@ export default function HowItWorks() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.15 }}
-                                className={`relative bg-white/5 border ${step.border} ${step.glow} rounded-3xl p-8 flex flex-col items-center text-center hover:bg-white/8 transition-all duration-300`}
+                                className={`relative border ${step.border} ${step.glow} rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-300`}
+                                style={{ backgroundColor: 'var(--bg-card)' }}
                             >
-                                <div className={`w-16 h-16 rounded-2xl bg-black/60 flex items-center justify-center mb-6 border ${step.border}`}>
+                                <div
+                                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border ${step.border}`}
+                                    style={{ backgroundColor: 'var(--bg-card-2)' }}
+                                >
                                     <Icon size={28} className={step.color} />
                                 </div>
                                 <span className={`text-5xl font-black ${step.color} opacity-20 absolute top-6 right-8 leading-none font-mono`}>
                                     {step.number}
                                 </span>
-                                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                                <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text)' }}>{step.title}</h3>
+                                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{step.description}</p>
                             </motion.div>
                         )
                     })}

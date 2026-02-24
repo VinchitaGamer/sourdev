@@ -8,22 +8,22 @@ export default function Footer() {
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="border-t border-white/10 bg-black/60 backdrop-blur-md mt-12">
+        <footer className="backdrop-blur-md mt-12" style={{ borderTop: '1px solid var(--border)', backgroundColor: 'var(--bg-card-2)' }}>
             <div className="container mx-auto px-6 max-w-6xl py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
 
                     {/* Brand */}
                     <div>
                         <img src={logo} alt="SourDev" className="h-10 w-auto mb-4" />
-                        <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+                        <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'var(--text-muted)' }}>
                             Automatización inteligente de WhatsApp para negocios que quieren crecer sin perder el toque humano.
                         </p>
                     </div>
 
                     {/* Navigation */}
                     <div>
-                        <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Navegación</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
+                        <h4 className="font-bold text-sm uppercase tracking-wider mb-4" style={{ color: 'var(--text)' }}>Navegación</h4>
+                        <ul className="space-y-2 text-sm" style={{ color: 'var(--text-muted)' }}>
                             <li><a href="#como-funciona" className="hover:text-sour-lime transition-colors">¿Cómo Funciona?</a></li>
                             <li><a href="#pricing" className="hover:text-sour-lime transition-colors">Precios</a></li>
                             <li><a href="#faq" className="hover:text-sour-lime transition-colors">Preguntas Frecuentes</a></li>
@@ -43,7 +43,7 @@ export default function Footer() {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Contacto</h4>
+                        <h4 className="font-bold text-sm uppercase tracking-wider mb-4" style={{ color: 'var(--text)' }}>Contacto</h4>
                         <div className="space-y-3">
                             <a
                                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -77,11 +77,11 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="text-gray-600 text-xs">
+                <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid var(--border)' }}>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
                         © {currentYear} SourDev. Todos los derechos reservados.
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-gray-600">
+                    <div className="flex items-center gap-4 text-xs" style={{ color: 'var(--text-muted)' }}>
                         <Link to="/admin/login" className="hover:text-sour-lime transition-colors">Admin</Link>
                         <span>•</span>
                         <span>Made with ⚡ in 🇧🇴</span>

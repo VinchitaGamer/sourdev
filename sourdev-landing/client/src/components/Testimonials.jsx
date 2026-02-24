@@ -63,10 +63,12 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.12 }}
-                            className={`relative p-7 rounded-3xl border flex flex-col gap-4 ${t.highlight
-                                    ? 'border-sour-lime/40 bg-sour-lime/5 shadow-[0_0_30px_rgba(182,255,0,0.08)]'
-                                    : 'border-white/10 bg-white/5'
+                            className={`relative p-7 rounded-3xl flex flex-col gap-4 ${t.highlight ? 'shadow-[0_0_30px_rgba(182,255,0,0.08)]' : ''
                                 }`}
+                            style={{
+                                border: `1px solid ${t.highlight ? 'var(--border-neon)' : 'var(--border)'}`,
+                                backgroundColor: t.highlight ? 'color-mix(in srgb, var(--bg-card) 95%, #b6ff00 5%)' : 'var(--bg-card)'
+                            }}
                         >
                             {t.highlight && (
                                 <div className="absolute top-4 right-4 text-[10px] bg-sour-lime text-black font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
@@ -74,14 +76,16 @@ export default function Testimonials() {
                                 </div>
                             )}
                             <StarRow count={t.stars} />
-                            <p className="text-gray-300 text-sm leading-relaxed flex-1">"{t.text}"</p>
-                            <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+                            <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-2)' }}>"{t.text}"</p>
+                            <div className="flex items-center gap-3 pt-2" style={{ borderTop: '1px solid var(--border)' }}>
                                 <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
                                     {t.avatar}
                                 </div>
                                 <div>
-                                    <p className="text-white font-bold text-sm">{t.name}</p>
-                                    <p className="text-gray-500 text-xs">{t.role} · {t.city}</p>
+                                    <div>
+                                        <p className="font-bold text-sm" style={{ color: 'var(--text)' }}>{t.name}</p>
+                                        <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{t.role} · {t.city}</p>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

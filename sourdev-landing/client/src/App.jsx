@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import './global.css';
 import api from './lib/api';
+import { ThemeProvider } from './context/ThemeContext';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Hero3D from './components/Hero3D';
 import HeroSection from './components/HeroSection';
@@ -45,7 +47,7 @@ function LandingPage() {
 
   return (
     <ContentContext.Provider value={content}>
-      <div className="theme-bg theme-text min-h-screen transition-colors duration-300">
+      <div className="bg-page text-primary min-h-screen transition-colors duration-300">
         <Navbar />
         <Hero3D />
         <HeroSection />
@@ -66,28 +68,30 @@ function LandingPage() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Public Landing Page */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/empezar" element={<LeadCapture />} />
-        <Route path="/plan/:id" element={<PlanDetails />} />
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          {/* Public Landing Page */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/empezar" element={<LeadCapture />} />
+          <Route path="/plan/:id" element={<PlanDetails />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin/login" element={<LoginPage />} />
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<LoginPage />} />
 
-        <Route path="/admin" element={
-          <ProtectedRoute>
-            <AdminLayout />
-          </ProtectedRoute>
-        }>
-          <Route index element={<Dashboard />} />
-          <Route path="content" element={<ContentEditor />} />
-          <Route path="pricing" element={<PricingManager />} />
-        </Route>
+          <Route path="/admin" element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }>
+            <Route index element={<Dashboard />} />
+            <Route path="content" element={<ContentEditor />} />
+            <Route path="pricing" element={<PricingManager />} />
+          </Route>
 
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
