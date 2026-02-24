@@ -39,10 +39,18 @@ export default function Navbar() {
                     }`}
             >
                 <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="flex items-center justify-between h-16">
-                        {/* Logo */}
-                        <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                            <img src={logo} alt="SourDev" className="h-8 w-auto" />
+                    <div className="flex items-center justify-between h-20">
+                        {/* Logo + Wordmark */}
+                        <a
+                            href="#"
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="flex items-center gap-2.5 group"
+                        >
+                            <img src={logo} alt="SourDev" className="h-12 w-auto drop-shadow-[0_0_8px_rgba(182,255,0,0.5)] group-hover:drop-shadow-[0_0_14px_rgba(182,255,0,0.8)] transition-all duration-300" />
+                            <span className="hidden sm:flex flex-col leading-none">
+                                <span className="text-white font-extrabold text-lg tracking-widest uppercase">SOURDEV</span>
+                                <span className="text-[10px] text-sour-lime font-semibold tracking-[0.2em] uppercase">Automatización IA</span>
+                            </span>
                         </a>
 
                         {/* Desktop Links */}
