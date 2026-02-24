@@ -105,17 +105,17 @@ export default function HeroSection() {
           transition={{ delay: 0.4 }}
           className="grid grid-cols-3 gap-2 w-full max-w-lg mb-8 md:mb-12"
         >
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 backdrop-blur-sm">
+          <div className="rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 transition-all hover:scale-105" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <span className="text-sour-lime">⚡</span>
-            <span className="text-[10px] md:text-xs font-bold text-gray-200 uppercase tracking-wider">Cierre Auto</span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text)' }}>Cierre Auto</span>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 backdrop-blur-sm">
+          <div className="rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 transition-all hover:scale-105" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <span className="text-sour-lime">🤖</span>
-            <span className="text-[10px] md:text-xs font-bold text-gray-200 uppercase tracking-wider">IA Nativa</span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text)' }}>IA Nativa</span>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 backdrop-blur-sm">
+          <div className="rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 transition-all hover:scale-105" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <span className="text-sour-lime">🌍</span>
-            <span className="text-[10px] md:text-xs font-bold text-gray-200 uppercase tracking-wider">24/7 On</span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text)' }}>24/7 On</span>
           </div>
         </motion.div>
 
@@ -134,7 +134,8 @@ export default function HeroSection() {
           </Link>
           <a
             href="#pricing"
-            className="px-8 py-4 rounded-xl border border-white/20 hover:bg-white/10 transition-all font-bold flex items-center justify-center gap-2 w-full sm:w-auto text-sm md:text-base backdrop-blur-md"
+            className="px-8 py-4 rounded-xl transition-all font-bold flex items-center justify-center gap-2 w-full sm:w-auto text-sm md:text-base backdrop-blur-md"
+            style={{ border: '1px solid var(--border)', color: 'var(--text)' }}
           >
             Ver Precios <ArrowRight size={18} className="md:w-5 md:h-5" />
           </a>

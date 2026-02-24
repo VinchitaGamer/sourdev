@@ -2,6 +2,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, Points, PointMaterial, Line, Sparkles } from '@react-three/drei'
 import * as THREE from 'three'
 import { useMemo, useRef, useState, useEffect } from 'react'
+import { useTheme } from '../context/ThemeContext'
 
 function Particles({ count = 900, radius = 2.6 }) {
   const ref = useRef()
@@ -69,6 +70,7 @@ function Scene() {
 
 export default function Hero3D() {
   const [isMobile, setIsMobile] = useState(true);
+  const { dark } = useTheme();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -78,7 +80,7 @@ export default function Hero3D() {
   }, []);
 
   if (isMobile) {
-    return <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-900 via-black to-black" />
+    return <div className="absolute inset-0 transition-colors duration-300" style={{ backgroundColor: 'var(--bg)' }} />
   }
 
   return (
@@ -88,7 +90,7 @@ export default function Hero3D() {
       gl={{ antialias: false, powerPreference: "high-performance" }}
       style={{ position: 'absolute', inset: 0 }}
     >
-      <color attach="background" args={['#0a0a0a']} />
+      <color attach="background" args={[dark ? '#0a0a0a' : '#f5f3ee']} />
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} color={'#d0ff30'} />
       <Scene />
