@@ -13,7 +13,7 @@ const TYPING_PHRASES = [
   'cierran ventas mientras duermes.',
 ]
 
-function useTypingEffect(phrases, speed = 60, pause = 2000) {
+function useTypingEffect(phrases, speed = 120, pause = 4500) {
   const [displayed, setDisplayed] = useState('')
   const [phraseIdx, setPhraseIdx] = useState(0)
   const [charIdx, setCharIdx] = useState(0)
@@ -33,7 +33,7 @@ function useTypingEffect(phrases, speed = 60, pause = 2000) {
       timeoutRef.current = setTimeout(() => {
         setDisplayed(current.slice(0, charIdx))
         setCharIdx(c => c - 1)
-      }, speed / 2)
+      }, Math.round(speed * 0.75))
     } else {
       setDeleting(false)
       setPhraseIdx(p => (p + 1) % phrases.length)
