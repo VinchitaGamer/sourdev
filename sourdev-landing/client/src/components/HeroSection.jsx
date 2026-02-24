@@ -99,6 +99,14 @@ export default function HeroSection() {
           >
             Ver Precios <ArrowRight size={18} className="md:w-5 md:h-5" />
           </a>
+          <a
+            href="https://portafoliobellido.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 rounded-xl border border-sour-lime/30 text-sour-lime hover:bg-sour-lime/10 hover:border-sour-lime/60 transition-all font-bold flex items-center justify-center gap-2 w-full sm:w-auto text-sm md:text-base backdrop-blur-md"
+          >
+            Ver Portafolio <ArrowRight size={18} className="md:w-5 md:h-5" />
+          </a>
         </motion.div>
       </div>
     </section>
