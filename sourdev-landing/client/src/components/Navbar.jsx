@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
-import logo from '../logo.png'
+import logo from '../pages/logo2.ico'
 
 const NAV_LINKS = [
     { label: '¿Cómo Funciona?', href: '#como-funciona' },
@@ -34,8 +34,8 @@ export default function Navbar() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                        ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/40'
-                        : 'bg-transparent'
+                    ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/40'
+                    : 'bg-transparent'
                     }`}
             >
                 <div className="container mx-auto px-6 max-w-6xl">

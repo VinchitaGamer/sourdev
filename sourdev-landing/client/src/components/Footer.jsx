@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../logo.png'
+import logo from '../pages/logo2.ico'
 import { MessageCircle, Github, Instagram } from 'lucide-react'
 
 const WHATSAPP_NUMBER = '59176266696'

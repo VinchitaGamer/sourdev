@@ -2,7 +2,7 @@ import { useContext, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, PlayCircle } from 'lucide-react'
-import logo from '../logo.png'
+import logo from '../pages/logo2.ico'
 import Hero3D from './Hero3D.jsx'
 import { ContentContext } from '../App.jsx'
 
@@ -73,10 +73,6 @@ export default function HeroSection() {
       <div className="scanlines -z-10" />
 
       <div className="mx-auto max-w-7xl px-4 pt-24 pb-20 sm:pt-20 sm:pb-36 relative flex flex-col items-center justify-center min-h-[80vh]">
-        {/* Logo Centered on Mobile */}
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 flex items-center gap-3">
-          <img src={logo} alt="SourDev Logo" className="h-10 md:h-20 w-auto" />
-        </div>
 
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
