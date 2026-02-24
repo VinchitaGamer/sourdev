@@ -36,6 +36,7 @@ function useTypingEffect(phrases, speed = 120, pause = 4500) {
       }, Math.round(speed * 0.75))
     } else {
       setDeleting(false)
+      setCharIdx(0)
       setPhraseIdx(p => (p + 1) % phrases.length)
     }
     return () => clearTimeout(timeoutRef.current)
