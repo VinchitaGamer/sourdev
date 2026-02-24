@@ -7,13 +7,14 @@ const FeatureCard = ({ icon, title, desc }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.5 }}
-    className="card-gradient p-4 md:p-8 rounded-2xl border border-white/5 hover:border-sour-lime/30 group transition-all duration-300"
+    className="p-4 md:p-8 rounded-2xl hover:border-sour-lime/30 group transition-all duration-300 backdrop-blur-md"
+    style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}
   >
     <div className="w-10 h-10 md:w-12 md:h-12 bg-sour-lime/10 rounded-xl flex items-center justify-center text-sour-lime mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300 border border-sour-lime/20">
       {icon}
     </div>
-    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sour-lime transition-colors">{title}</h3>
-    <p className="text-gray-400 text-sm leading-relaxed">
+    <h3 className="text-xl font-bold mb-3 group-hover:text-sour-lime transition-colors" style={{ color: 'var(--text)' }}>{title}</h3>
+    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
       {desc}
     </p>
   </motion.div>
@@ -25,8 +26,8 @@ export default function Features() {
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-16">
           <span className="text-sour-lime text-xs font-mono tracking-widest uppercase mb-4 block">Tecnología de Punta</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Nuclear Power for your Marketing</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text)' }}>Nuclear Power for your Marketing</h2>
+          <p className="max-w-2xl mx-auto text-lg" style={{ color: 'var(--text-muted)' }}>
             Deja de perseguir leads. Deja que nuestra IA los capture, califique y cierre por ti.
           </p>
         </div>
