@@ -6,8 +6,8 @@
 :root,
 .dark {
     --bg: #0a0a0a;
-    --bg-card: rgba(255, 255, 255, 0.05);
-    --bg-card-2: rgba(255, 255, 255, 0.03);
+    --bg-card: rgba(255, 255, 255, 0.04);
+    --bg-card-2: rgba(255, 255, 255, 0.02);
     --bg-hover: rgba(255, 255, 255, 0.08);
     --text: #ffffff;
     --text-2: #d1d5db;
@@ -22,9 +22,9 @@
 
 .light {
     --bg: #f5f3ee;
-    --bg-card: #ffffff;
-    --bg-card-2: #f0ede8;
-    --bg-hover: #e8e4dd;
+    --bg-card: rgba(255, 255, 255, 0.60);
+    --bg-card-2: rgba(255, 255, 255, 0.40);
+    --bg-hover: rgba(255, 255, 255, 0.80);
     --text: #1a1a1a;
     --text-2: #3d3d3d;
     --text-muted: #6b7280;
@@ -62,10 +62,14 @@ body {
 
 .bg-card {
     background-color: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .bg-card-2 {
     background-color: var(--bg-card-2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .text-primary {
@@ -100,6 +104,8 @@ body {
 .card-neon {
     background-color: var(--bg-card);
     border: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: border-color 0.3s, background-color 0.35s;
 }
 
