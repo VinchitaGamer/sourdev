@@ -1,10 +1,48 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, PlayCircle } from 'lucide-react'
 import logo from '../logo.png'
 import Hero3D from './Hero3D.jsx'
 import { ContentContext } from '../App.jsx'
+
+const TYPING_PHRASES = [
+  'responden preguntas 24/7.',
+  'agendan citas solas.',
+  'registran clientes automáticamente.',
+  'cierran ventas mientras duermes.',
+]
+
+function useTypingEffect(phrases, speed = 60, pause = 2000) {
+  const [displayed, setDisplayed] = useState('')
+  const [phraseIdx, setPhraseIdx] = useState(0)
+  const [charIdx, setCharIdx] = useState(0)
+  const [deleting, setDeleting] = useState(false)
+  const timeoutRef = useRef(null)
+
+  useEffect(() => {
+    const current = phrases[phraseIdx]
+    if (!deleting && charIdx <= current.length) {
+      timeoutRef.current = setTimeout(() => {
+        setDisplayed(current.slice(0, charIdx))
+        setCharIdx(c => c + 1)
+      }, speed)
+    } else if (!deleting && charIdx > current.length) {
+      timeoutRef.current = setTimeout(() => setDeleting(true), pause)
+    } else if (deleting && charIdx >= 0) {
+      timeoutRef.current = setTimeout(() => {
+        setDisplayed(current.slice(0, charIdx))
+        setCharIdx(c => c - 1)
+      }, speed / 2)
+    } else {
+      setDeleting(false)
+      setPhraseIdx(p => (p + 1) % phrases.length)
+    }
+    return () => clearTimeout(timeoutRef.current)
+  }, [charIdx, deleting, phraseIdx, phrases, speed, pause])
+
+  return displayed
+}
 
 const container = {
   hidden: { opacity: 0 },
@@ -21,9 +59,9 @@ const child = {
 
 export default function HeroSection() {
   const { hero } = useContext(ContentContext);
+  const typedText = useTypingEffect(TYPING_PHRASES);
 
   const title = hero?.title || 'Automatiza tu WhatsApp. Escala tu Negocio.';
-  const subtitle = hero?.subtitle || 'Plataforma de automatización de WhatsApp para envío masivo, gestión de clientes y reportes en tiempo real.';
   const ctaText = hero?.ctaText || 'Comenzar Gratis';
 
   return (
@@ -56,7 +94,11 @@ export default function HeroSection() {
           transition={{ delay: 0.3 }}
           className="text-center text-gray-300 max-w-2xl mx-auto mb-8 text-base md:text-2xl leading-relaxed px-2"
         >
-          No más envíos masivos manuales. Implementa <span className="text-white font-semibold">Bots de Inteligencia Artificial</span> que responden, califican y cierran ventas 24/7.
+          Bots de WhatsApp que{' '}
+          <span className="text-sour-lime font-semibold">
+            {typedText}
+            <span className="inline-block w-0.5 h-5 bg-sour-lime ml-0.5 animate-pulse align-middle" />
+          </span>
         </motion.p>
 
         {/* Benefits Cards (Fichas) - Requested by User */}

@@ -1,12 +1,20 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDown, ChevronUp, CheckCircle2 } from 'lucide-react'
+import { ChevronDown, ChevronUp, CheckCircle2, Bot, CalendarCheck, Network } from 'lucide-react'
 import api from '../lib/api'
+
+const PLAN_META = {
+  'Chatbot FAQ': { icon: Bot, color: 'text-blue-400', bg: 'bg-blue-400/10', border: 'border-blue-400/20' },
+  'Bot Agendador': { icon: CalendarCheck, color: 'text-sour-lime', bg: 'bg-sour-lime/10', border: 'border-sour-lime/20' },
+  'Ecosistema': { icon: Network, color: 'text-purple-400', bg: 'bg-purple-400/10', border: 'border-purple-400/20' },
+}
 
 const PricingCard = ({ plan, index }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const isPro = plan.name === 'Pro';
+  const isPro = plan.name === 'Bot Agendador';
+  const meta = PLAN_META[plan.name] || { icon: Bot, color: 'text-gray-400', bg: 'bg-white/10', border: 'border-white/10' };
+  const PlanIcon = meta.icon;
 
   return (
     <motion.div
@@ -42,6 +50,9 @@ const PricingCard = ({ plan, index }) => {
         )}
 
         <div className="mb-4">
+          <div className={`w-12 h-12 rounded-xl ${meta.bg} border ${meta.border} flex items-center justify-center mb-4`}>
+            <PlanIcon size={24} className={meta.color} />
+          </div>
           <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
           <div className="flex items-baseline gap-1">
             <span className="text-4xl font-extrabold text-sour-lime">{plan.price}</span>

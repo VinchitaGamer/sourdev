@@ -12,6 +12,8 @@ import HowItWorks from './components/HowItWorks';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import FloatingCTA from './components/FloatingCTA';
+import Navbar from './components/Navbar';
+import Testimonials from './components/Testimonials';
 import PlanDetails from './pages/PlanDetails';
 import LeadCapture from './pages/LeadCapture';
 
@@ -44,6 +46,7 @@ function LandingPage() {
   return (
     <ContentContext.Provider value={content}>
       <div className="bg-black text-white min-h-screen">
+        <Navbar />
         <Hero3D />
         <HeroSection />
         <HowItWorks />
@@ -51,6 +54,7 @@ function LandingPage() {
         <UseCases />
         <BotDemo />
         <Pricing />
+        <Testimonials />
         <FAQ />
         <ContactForm />
         <Footer />
