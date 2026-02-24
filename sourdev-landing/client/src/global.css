@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ─────────────────────────────────────────────
    GLOBAL THEME — CSS Custom Properties
    Dark is default. Light mode applied via .light on <html>
