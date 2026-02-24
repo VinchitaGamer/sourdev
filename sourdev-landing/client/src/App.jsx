@@ -3,7 +3,6 @@ import './global.css';
 import api from './lib/api';
 import { ThemeProvider } from './context/ThemeContext';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Hero3D from './components/Hero3D';
 import HeroSection from './components/HeroSection';
 import Features from './components/Features';
 import UseCases from './components/UseCases';
@@ -49,7 +48,6 @@ function LandingPage() {
     <ContentContext.Provider value={content}>
       <div className="bg-page text-primary min-h-screen transition-colors duration-300">
         <Navbar />
-        <Hero3D />
         <HeroSection />
         <HowItWorks />
         <Features />

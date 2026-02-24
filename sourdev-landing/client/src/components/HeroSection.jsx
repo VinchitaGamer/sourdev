@@ -73,7 +73,7 @@ export default function HeroSection() {
       <div className="radial-hero -z-10" />
       <div className="scanlines -z-10" />
 
-      <div className="mx-auto max-w-7xl px-4 pt-24 pb-20 sm:pt-20 sm:pb-36 relative flex flex-col items-center justify-center min-h-[80vh]">
+      <div className="mx-auto max-w-7xl px-4 pt-24 pb-32 sm:pt-20 sm:pb-48 relative flex flex-col items-center justify-center min-h-[90vh]">
 
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
