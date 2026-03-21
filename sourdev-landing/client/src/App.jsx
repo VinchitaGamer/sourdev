@@ -24,6 +24,7 @@ import LoginPage from './pages/admin/LoginPage';
 import Dashboard from './pages/admin/Dashboard';
 import ContentEditor from './pages/admin/ContentEditor';
 import PricingManager from './pages/admin/PricingManager';
+import YarineEasterEgg from './pages/YarineEasterEgg';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -73,6 +74,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/empezar" element={<LeadCapture />} />
           <Route path="/plan/:id" element={<PlanDetails />} />
+          <Route path="/yarine" element={<YarineEasterEgg />} />
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<LoginPage />} />
